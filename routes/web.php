@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ExpensController;
+use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\StatisticController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,3 +36,12 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+Route::get('/statistics', [StatisticController::class, 'index'])->name('statistics.index');
+
+
+Route::get('/incomes', [IncomeController::class, 'index'])->name('incomes.index');
+Route::get('/incomes/create', [IncomeController::class, 'create'])->name('incomes.create');
+
+
+Route::get('/expenses', [ExpensController::class, 'index'])->name('expenses.index');

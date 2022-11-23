@@ -30,12 +30,9 @@ const logout = () => {
 
 <template>
     <div>
-        <Head :title="title" />
 
-        <Banner />
-
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+        <div class="min-h-screen bg-stone-900 text-gray-300">
+            <nav class="bg-stone border-b border-indigo-600/100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -43,7 +40,7 @@ const logout = () => {
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
-                                    <ApplicationMark class="block h-9 w-auto" />
+                                    <!-- <ApplicationMark class="block h-9 w-auto" /> -->
                                 </Link>
                             </div>
 
@@ -133,8 +130,8 @@ const logout = () => {
                                             <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name">
                                         </button>
 
-                                        <span v-else class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                                        <span v-else class="inline-flex rounded-md ">
+                                            <button type="button" class=" bg-stone-700 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-300 hover:text-gray-100 focus:outline-none transition">
                                                 {{ $page.props.user.name }}
 
                                                 <svg
@@ -151,7 +148,7 @@ const logout = () => {
 
                                     <template #content>
                                         <!-- Account Management -->
-                                        <div class="block px-4 py-2 text-xs text-gray-400">
+                                        <div class="block px-4 py-2 text-xs text-gray-400 bg-stone-700">
                                             Manage Account
                                         </div>
 
@@ -178,9 +175,9 @@ const logout = () => {
 
                         <!-- Hamburger -->
                         <div class="-mr-2 flex items-center sm:hidden">
-                            <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition" @click="showingNavigationDropdown = ! showingNavigationDropdown">
+                            <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-200 hover:text-stone-700 hover:bg-stone-500 focus:outline-none focus:bg-gray-700 focus:text-gray-700 transition" @click="showingNavigationDropdown = ! showingNavigationDropdown">
                                 <svg
-                                    class="h-6 w-6"
+                                    class="h-6 w-6 text-stone-400"
                                     stroke="currentColor"
                                     fill="none"
                                     viewBox="0 0 24 24"
@@ -209,7 +206,16 @@ const logout = () => {
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                            Inicio
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('statistics.index')" :active="route().current('statistics.*')">
+                            Estadísticas
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('incomes.index')" :active="route().current('incomes.*')">
+                            Ingresos
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('expenses.index')" :active="route().current('expenses.*')">
+                            Egresos
                         </ResponsiveNavLink>
                     </div>
 

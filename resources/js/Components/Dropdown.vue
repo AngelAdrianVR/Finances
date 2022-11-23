@@ -53,7 +53,7 @@ const alignmentClasses = computed(() => {
         </div>
 
         <!-- Full Screen Dropdown Overlay -->
-        <div v-show="open" class="fixed inset-0 z-40" @click="open = false" />
+        <div v-show="open" class="fixed inset-0 z-40 " @click="open = false" />
 
         <transition
             enter-active-class="transition ease-out duration-200"
@@ -70,7 +70,7 @@ const alignmentClasses = computed(() => {
                 style="display: none;"
                 @click="open = false"
             >
-                <div class="rounded-md ring-1 ring-black ring-opacity-5" :class="contentClasses">
+                <div class="rounded-md ring-1 ring-black ring-opacity-5 bg-stone-700" :class="contentClasses">
                     <slot name="content" />
                 </div>
             </div>

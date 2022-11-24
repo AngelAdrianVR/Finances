@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ExpensController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\LoanController;
 use App\Http\Controllers\StatisticController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,13 @@ Route::get('/statistics', [StatisticController::class, 'index'])->name('statisti
 
 Route::get('/incomes', [IncomeController::class, 'index'])->name('incomes.index');
 Route::get('/incomes/create', [IncomeController::class, 'create'])->name('incomes.create');
+Route::post('/incomes/store', [IncomeController::class, 'store'])->name('incomes.store');
 
 
-Route::get('/expenses', [ExpensController::class, 'index'])->name('expenses.index');
+Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses.index');
+Route::get('/expenses/create', [ExpenseController::class, 'create'])->name('expenses.create');
+Route::post('/expenses/store', [ExpenseController::class, 'store'])->name('expenses.store');
+
+Route::get('/loans',[LoanController::class, 'index'])->name('loans.index');
+Route::get('/loans/create',[LoanController::class, 'create'])->name('loans.create');
+Route::post('/loans/store',[LoanController::class, 'store'])->name('loans.store');

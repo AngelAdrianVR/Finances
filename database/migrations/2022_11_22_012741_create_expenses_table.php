@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedMediumInteger('quantity');
             $table->string('concept');
-            $table->foreignId('categories_id')->onDelete('cascade');
+            $table->foreignId('category_id')->onDelete('cascade');
             $table->timestamps();
         });
     }

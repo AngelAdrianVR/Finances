@@ -1,11 +1,11 @@
 <template>
-    <AppLayout title="Crear Ingreso">
+    <AppLayout title="Crear Registro de Préstamo">
     <div class="flex space-x-7 ml-2">
-        <Link :href="route('incomes.index')" class="flex items-center mt-2 text-indigo-600">
+        <Link :href="route('loans.index')" class="flex items-center mt-2 text-indigo-600">
             <i class="fas fa-long-arrow-alt-left text-lg"></i>
             <span class="ml-2">Atrás</span>
         </Link>
-        <header class="block text-3xl text-gray-100 bg-stone-900 mt-5">Crear Ingreso</header>
+        <header class="block text-3xl text-gray-100 bg-stone-900 mt-5">Crear Registro de Prestamo</header>
     </div>
        <div class="container mx-auto bg-stone-700 rounded-lg h-60 mt-8 w-[90%]">
 
@@ -76,7 +76,7 @@ export default {
     },
     methods:{
         store() {
-      this.form.post(this.route('incomes.store'));
+      this.form.post(this.route('loans.store'));
     },
     },
 }

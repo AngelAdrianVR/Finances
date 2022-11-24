@@ -5,11 +5,11 @@
         <Link :href="route('incomes.create')"><PrimaryButton class="mr-2 my-4">Crear +</PrimaryButton></Link>
        </div>
 
-       <div class="container mx-auto bg-stone-700 rounded-lg h-20 mt-8 w-[90%]">
+       <div v-for="income in incomes" :key="income.id" class="container mx-auto bg-stone-700 rounded-lg h-20 mt-4 w-[90%]">
             <div class="flex flex-row space-x-5 px-4 py-3 text-lg">
-                <span class="font-bold"> {{ 'Concepto' }} </span>
-                <span> {{ '$Cantidad' }} </span>
-                <span> {{ 'Fecha' }} </span>
+                <span class="font-bold"> {{ income.concept }} </span>
+                <span> ${{ income.quantity }} </span>
+                <span> {{ income.created_at }} </span>
             </div>
        </div>
     </AppLayout>

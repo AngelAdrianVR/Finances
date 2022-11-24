@@ -54,7 +54,7 @@
 </Link>
 
 
-<a href="#" class="w-full">
+<Link :href="route('expenses.index')" class="w-full">
 	<div
 		class='flex flex-wrap flex-row sm:flex-col justify-center items-center w-full sm:w-1/4 p-5 bg-gray-600 rounded-md shadow-xl border-l-4 border-red-400'>
 		<div class="flex justify-between w-full">
@@ -73,11 +73,11 @@
             <span class="font-semibold">Egresos</span>
 		</div>
 	</div>
-</a>
+</Link>
 
 
 
-<a href="#" class="w-full">
+<Link :href="route('loans.index')" class="w-full">
 	<div
 		class='flex flex-wrap flex-row sm:flex-col justify-center items-center w-full sm:w-1/4 p-5 bg-gray-600 rounded-md shadow-xl border-l-4 border-purple-300'>
 		<div class="flex justify-between w-full">
@@ -96,7 +96,7 @@
             <span class="font-semibold">Préstamos</span>
 		</div>
 	</div>
-</a>
+</Link>
 
 
 
@@ -140,7 +140,7 @@
 		</div>
 		<div class="flex flex-col justify-center items-center">
 			<i class="fa-solid fa-piggy-bank text-5xl text-gray-200"></i>
-            <span class="font-semibold">Deudas</span>
+            <span class="font-semibold">Inversiones</span>
 		</div>
 	</div>
 </a>

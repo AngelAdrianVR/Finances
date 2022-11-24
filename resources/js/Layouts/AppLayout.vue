@@ -30,6 +30,7 @@ const logout = () => {
 
 <template>
     <div>
+    <Banner />
 
         <div class="min-h-screen bg-stone-900 text-gray-300">
             <nav class="bg-stone border-b border-indigo-600/100">
@@ -216,6 +217,9 @@ const logout = () => {
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('expenses.index')" :active="route().current('expenses.*')">
                             Egresos
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('loans.index')" :active="route().current('loans.*')">
+                            Préstamos
                         </ResponsiveNavLink>
                     </div>
 

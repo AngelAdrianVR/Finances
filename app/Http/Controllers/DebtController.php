@@ -21,11 +21,20 @@ class DebtController extends Controller
 
     public function store(Request $request)
     {
+        
         $validated = $request->validate([
             'quantity' => 'required|numeric|min:1',
-            'debtor' => 'required|max:30',
+            'lender' => 'required|max:30',
+            'reason' => 'max:50',
             'pay_date' => 'after:today',
         ]);
+
+        Debt::create($validated);
+
+        request()->session()->flash('flash.banner', 'Creada nuevo Registro de Deuda correctamente!');
+        request()->session()->flash('flash.bannerStyle', 'success');
+
+        return redirect()->route('debts.index');
         
     }
 }

@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Loan extends Model
+class Debt extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'quantity',
-        'debtor',
-        'payed_at',
+        'lender',
+        'reason',
         'pay_date',
-           
+        'payed_at',
     ];
 
     protected $dates = [

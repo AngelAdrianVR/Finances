@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DebtController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\LoanController;
@@ -53,3 +54,8 @@ Route::post('/expenses/store', [ExpenseController::class, 'store'])->name('expen
 Route::get('/loans',[LoanController::class, 'index'])->name('loans.index');
 Route::get('/loans/create',[LoanController::class, 'create'])->name('loans.create');
 Route::post('/loans/store',[LoanController::class, 'store'])->name('loans.store');
+
+Route::get('/debts',[DebtController::class, 'index'])->name('debts.index');
+Route::get('/debts/create',[DebtController::class, 'create'])->name('debts.create');
+Route::post('/debts/store',[DebtController::class, 'store'])->name('debts.store');
+

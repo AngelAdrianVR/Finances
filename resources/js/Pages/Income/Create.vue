@@ -13,7 +13,7 @@
             <form @submit.prevent="store" class="mt-6">
         <div class="lg:grid grid-cols-2 gap-x-3 transition-dark dark:bg-slate-900 flex flex-row justify-center">
           <div class="mt-3 text-center">
-            <InputLabel class="dark:text-gray-300 mx-4 my-2" value="Cantidad" />
+            <InputLabel class="dark:text-gray-300 mx-4 my-2 text-lg" value="Cantidad" />
             <TextInput
                     id="quantity"
                     v-model="form.quantity"
@@ -24,7 +24,7 @@
                 />
             <!-- <InputError class="mt-2" :message="form.quantity" /> -->
 
-            <InputLabel class="dark:text-gray-300 mx-4 my-2" value="Concepto" />
+            <InputLabel class="dark:text-gray-300 mx-4 my-2 text-lg" value="Concepto" />
             <TextInput
                     id="concept"
                     v-model="form.concept"

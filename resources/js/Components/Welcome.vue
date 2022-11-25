@@ -100,7 +100,7 @@
 
 
 
-<a href="#" class="w-full">
+<Link :href="route('debts.index')" class="w-full">
 <div
 		class='flex flex-wrap flex-row sm:flex-col justify-center items-center w-full sm:w-1/4 p-5 bg-gray-600 rounded-md shadow-xl border-l-4 border-orange-300'>
 		<div class="flex justify-between w-full">
@@ -119,7 +119,7 @@
             <span class="font-semibold">Deudas</span>
 		</div>
 	</div>
-</a>
+</Link>
 
 
 

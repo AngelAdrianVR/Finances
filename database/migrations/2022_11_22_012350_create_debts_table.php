@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedSmallInteger('quantity');
             $table->string('lender');
             $table->text('reason');
-            $table->date('pay_date');
-            $table->date('payed_at');
+            $table->date('pay_date')->nullable();
+            $table->date('payed_at')->nullable();
             $table->timestamps();
         });
     }

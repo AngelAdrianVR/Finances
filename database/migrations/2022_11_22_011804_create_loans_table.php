@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedSmallInteger('quantity');
             $table->string('debtor');
-            $table->date('pay_date');
-            $table->date('payed_at');
+            $table->date('pay_date')->nullable();
+            $table->date('payed_at')->nullable();
             $table->timestamps();
         });
     }

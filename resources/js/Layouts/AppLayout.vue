@@ -224,6 +224,9 @@ const logout = () => {
                         <ResponsiveNavLink :href="route('debts.index')" :active="route().current('debts.*')">
                             Deudas
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('investments.index')" :active="route().current('investments.*')">
+                            Inversiones
+                        </ResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->

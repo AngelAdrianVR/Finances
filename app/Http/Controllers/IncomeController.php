@@ -39,4 +39,11 @@ class IncomeController extends Controller
 
         return redirect()->route('incomes.index');
     }
+
+    public function destroy($income)
+    {
+        dd($income);
+    //   $income->delete();
+        return redirect()->route('incomes.index');
+    }
 }

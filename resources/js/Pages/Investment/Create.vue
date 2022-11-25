@@ -1,18 +1,18 @@
 <template>
-  <AppLayout title="Crear Deuda">
+  <AppLayout title="Crear Inversión">
     <div class="flex space-x-7 ml-2">
       <Link
-        :href="route('debts.index')"
+        :href="route('investments.index')"
         class="flex items-center mt-2 text-indigo-600"
       >
         <i class="fas fa-long-arrow-alt-left text-lg"></i>
         <span class="ml-2">Atrás</span>
       </Link>
       <header class="block text-3xl text-gray-100 bg-stone-900 mt-5">
-        Crear Deuda
+        Crear Inversión
       </header>
     </div>
-    <div class="container mx-auto bg-stone-700 rounded-lg h-96 mt-8 w-[90%]">
+    <div class="container mx-auto bg-stone-700 rounded-lg h-2/3 mt-8 w-[90%]">
       <form @submit.prevent="store" class="mt-6">
         <div
           class="
@@ -40,11 +40,11 @@
             />
             <InputLabel
               class="dark:text-gray-300 mx-4 my-1 text-lg"
-              value="Rason"
+              value="Plataforma"
             />
             <TextInput
-              id="reason"
-              v-model="form.reason"
+              id="platform"
+              v-model="form.platform"
               type="text"
               class="mt-1 block w-full"
               required
@@ -53,11 +53,11 @@
 
             <InputLabel
               class="dark:text-gray-300 mx-4 my-1 text-lg"
-              value="Prestador"
+              value="Tipo"
             />
             <TextInput
-              id="lender"
-              v-model="form.lender"
+              id="type"
+              v-model="form.type"
               type="text"
               class="mt-1 block w-full"
               required
@@ -66,11 +66,24 @@
 
             <InputLabel
               class="dark:text-gray-300 mx-4 my-1 text-lg"
-              value="Fecha de pago"
+              value="Ganancia"
             />
             <TextInput
-              id="pay_date"
-              v-model="form.pay_date"
+              id="profit"
+              v-model="form.profit"
+              type="text"
+              class="mt-1 block w-full"
+              required
+              autofocus
+            />
+
+            <InputLabel
+              class="dark:text-gray-300 mx-4 my-1 text-lg"
+              value="Fecha de liberación"
+            />
+            <TextInput
+              id="release_date"
+              v-model="form.release_date"
               type="date"
               class="mt-1 block w-full"
               required
@@ -96,9 +109,10 @@ export default {
   data() {
     const form = useForm({
       quantity: null,
-      reason: "",
-      lender: "",
-      pay_date: "",
+      platform: "",
+      type: "",
+      profit: "",
+      release_date: "",
     });
     return {
       form,
@@ -117,7 +131,7 @@ export default {
   },
   methods: {
     store() {
-      this.form.post(this.route("debts.store"));
+      this.form.post(this.route("investments.store"));
     },
   },
 };

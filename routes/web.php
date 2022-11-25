@@ -3,6 +3,7 @@
 use App\Http\Controllers\DebtController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\StatisticController;
 use Illuminate\Foundation\Application;
@@ -45,6 +46,7 @@ Route::get('/statistics', [StatisticController::class, 'index'])->name('statisti
 Route::get('/incomes', [IncomeController::class, 'index'])->name('incomes.index');
 Route::get('/incomes/create', [IncomeController::class, 'create'])->name('incomes.create');
 Route::post('/incomes/store', [IncomeController::class, 'store'])->name('incomes.store');
+Route::post('/incomes/destroy', [IncomeController::class, 'destroy'])->name('incomes.destroy');
 
 
 Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses.index');
@@ -58,4 +60,8 @@ Route::post('/loans/store',[LoanController::class, 'store'])->name('loans.store'
 Route::get('/debts',[DebtController::class, 'index'])->name('debts.index');
 Route::get('/debts/create',[DebtController::class, 'create'])->name('debts.create');
 Route::post('/debts/store',[DebtController::class, 'store'])->name('debts.store');
+
+Route::get('/investments',[InvestmentController::class, 'index'])->name('investments.index');
+Route::get('/investments/create',[InvestmentController::class, 'create'])->name('investments.create');
+Route::post('/investments/store',[InvestmentController::class, 'store'])->name('investments.store');
 

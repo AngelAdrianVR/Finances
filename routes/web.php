@@ -46,22 +46,26 @@ Route::get('/statistics', [StatisticController::class, 'index'])->name('statisti
 Route::get('/incomes', [IncomeController::class, 'index'])->name('incomes.index');
 Route::get('/incomes/create', [IncomeController::class, 'create'])->name('incomes.create');
 Route::post('/incomes/store', [IncomeController::class, 'store'])->name('incomes.store');
-Route::post('/incomes/destroy', [IncomeController::class, 'destroy'])->name('incomes.destroy');
+Route::delete('/incomes/{income}', [IncomeController::class, 'destroy'])->name('incomes.destroy');
 
 
 Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses.index');
 Route::get('/expenses/create', [ExpenseController::class, 'create'])->name('expenses.create');
 Route::post('/expenses/store', [ExpenseController::class, 'store'])->name('expenses.store');
+Route::delete('/expenses/{expense}', [ExpenseController::class, 'destroy'])->name('expenses.destroy');
 
 Route::get('/loans',[LoanController::class, 'index'])->name('loans.index');
 Route::get('/loans/create',[LoanController::class, 'create'])->name('loans.create');
 Route::post('/loans/store',[LoanController::class, 'store'])->name('loans.store');
+Route::delete('/loans/{loan}',[LoanController::class, 'destroy'])->name('loans.destroy');
 
 Route::get('/debts',[DebtController::class, 'index'])->name('debts.index');
 Route::get('/debts/create',[DebtController::class, 'create'])->name('debts.create');
 Route::post('/debts/store',[DebtController::class, 'store'])->name('debts.store');
+Route::delete('/debts/{debt}',[DebtController::class, 'destroy'])->name('debts.destroy');
 
 Route::get('/investments',[InvestmentController::class, 'index'])->name('investments.index');
 Route::get('/investments/create',[InvestmentController::class, 'create'])->name('investments.create');
 Route::post('/investments/store',[InvestmentController::class, 'store'])->name('investments.store');
+Route::delete('/investments/{investment}',[InvestmentController::class, 'destroy'])->name('investments.destroy');
 

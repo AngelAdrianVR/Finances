@@ -44,7 +44,7 @@
         x
       </button>
       <div class="flex flex-row space-x-5 px-4 py-3 text-lg">
-        <span class="font-bold"> {{ investment.platform }} </span>
+        <span class="font-bold uppercase"> {{ investment.platform }} </span>
         <span> {{ investment.type }} </span>
         <span> ${{ investment.quantity }} </span>
         <span> ${{ investment.profit }} </span>

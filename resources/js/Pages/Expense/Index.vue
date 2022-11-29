@@ -41,7 +41,7 @@
         x
       </button>
       <div class="flex flex-row space-x-5 px-4 py-3 text-lg">
-        <span class="font-bold"> {{ expense.concept }} </span>
+        <span class="font-bold uppercase"> {{ expense.concept }} </span>
         <span> ${{ expense.quantity }} </span>
         <span> {{ expense.created_at }} </span>
         <span> {{ expense.category }} </span>

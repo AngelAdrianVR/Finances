@@ -44,7 +44,7 @@
         x
       </button>
       <div class="flex flex-row space-x-5 px-4 py-3 text-lg">
-        <span class="font-bold"> {{ loan.debtor }} </span>
+        <span class="font-bold uppercase"> {{ loan.debtor }} </span>
         <span> ${{ loan.quantity }} </span>
         <span> {{ loan.created_at }} </span>
       </div>

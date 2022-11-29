@@ -44,7 +44,7 @@
         x
       </button>
       <div class="flex flex-row space-x-5 px-4 py-3 text-lg">
-        <span class="font-bold"> {{ debt.lender }} </span>
+        <span class="font-bold uppercase"> {{ debt.lender }} </span>
         <span> ${{ debt.quantity }} </span>
         <span> {{ debt.reason }} </span>
       </div>

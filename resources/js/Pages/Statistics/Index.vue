@@ -13,7 +13,7 @@
       <div class="flex justify-between px-5 pt-6 mb-2 text-sm text-white">
         <p>TOTAL</p>
       </div>
-      <p class="py-4 text-3xl ml-5">$20,456</p>
+      <p class="py-4 text-3xl ml-5">${{ total_incomes }}</p>
     </div>
   </div>
       <!---== First Stats Container ====--->
@@ -27,7 +27,7 @@
       <div class="flex justify-between px-5 pt-6 mb-2 text-sm text-white">
         <p>TOTAL</p>
       </div>
-      <p class="py-4 text-3xl ml-5">$20,456</p>
+      <p class="py-4 text-3xl ml-5">${{ total_expenses }} </p>
     </div>
   </div>
     <!---== Second Stats Container ====--->
@@ -41,7 +41,7 @@
       <div class="flex justify-between px-5 pt-6 mb-2 text-sm text-white">
         <p>TOTAL</p>
       </div>
-      <p class="py-4 text-3xl ml-5">$20,456</p>
+      <p class="py-4 text-3xl ml-5">${{ total_loans }} </p>
     </div>
   </div>
   <!---== Third Stats Container ====--->
@@ -55,7 +55,7 @@
       <div class="flex justify-between px-5 pt-6 mb-2 text-sm text-white">
         <p>TOTAL</p>
       </div>
-      <p class="py-4 text-3xl ml-5">$20,456</p>
+      <p class="py-4 text-3xl ml-5">${{ total_debts }} </p>
     </div>
   </div>
   <!---== Fourth Stats Container ====--->
@@ -69,7 +69,7 @@
       <div class="flex justify-between px-5 pt-6 mb-2 text-sm text-white">
         <p>TOTAL</p>
       </div>
-      <p class="py-4 text-3xl ml-5">$20,456</p>
+      <p class="py-4 text-3xl ml-5">${{ total_investments }} </p>
     </div>
   </div>
   <!---== fiveth Stats Container ====--->
@@ -243,7 +243,11 @@ export default {
         AppLayout,
     },
     props:{
-
+      total_incomes: String,
+      total_expenses: String,
+      total_loans: String,
+      total_debts: String,
+      total_investments: String,
     },
     methods:{
 

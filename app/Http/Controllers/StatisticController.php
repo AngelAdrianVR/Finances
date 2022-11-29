@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Debt;
+use App\Models\Expense;
+use App\Models\Income;
+use App\Models\Investment;
+use App\Models\Loan;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,6 +20,11 @@ class StatisticController extends Controller
 
     public function index()
     {
-       return Inertia::render('Statistics/Index');
+        $total_incomes = number_format(Income::all()->sum('quantity'),2);
+        $total_expenses = number_format(Expense::all()->sum('quantity'),2);
+        $total_loans = number_format(Loan::all()->sum('quantity'),2);
+        $total_debts = number_format(Debt::all()->sum('quantity'),2);
+        $total_investments = number_format(Investment::all()->sum('quantity'),2);
+       return Inertia::render('Statistics/Index', compact('total_incomes','total_expenses','total_loans','total_debts','total_investments'));
     }
 }

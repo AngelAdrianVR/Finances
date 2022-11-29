@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\InvestmentResource;
 use App\Models\Investment;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -10,7 +11,7 @@ class InvestmentController extends Controller
 {
     public function index()
     {
-        $investments = Investment::all();
+        $investments = InvestmentResource::collection(Investment::latest()->get());
         return Inertia::render('Investment/Index', compact('investments'));
     }
 
@@ -37,4 +38,13 @@ class InvestmentController extends Controller
 
         return redirect()->route('investments.index');
     }
+
+    public function destroy(Investment $investment)
+   {
+       $investment->delete();
+       request()->session()->flash('flash.banner', 'Se ha eliminado correctamente!');
+       request()->session()->flash('flash.bannerStyle', 'success'); 
+       return redirect()->route('investments.index');
+
+   }
 }

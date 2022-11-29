@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\IncomeResource;
 use App\Models\Income;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -16,7 +17,7 @@ class IncomeController extends Controller
 
     public function index()
     {
-        $incomes = Income::all();
+        $incomes = IncomeResource::collection(Income::latest()->get());
         return Inertia::render('Income/Index', compact('incomes'));
     }
 
@@ -40,10 +41,11 @@ class IncomeController extends Controller
         return redirect()->route('incomes.index');
     }
 
-    public function destroy($income)
+    public function destroy(Income $income)
     {
-        dd($income);
-    //   $income->delete();
+        $income->delete();   
+        request()->session()->flash('flash.banner', 'Se ha eliminado correctamente!');
+        request()->session()->flash('flash.bannerStyle', 'success'); 
         return redirect()->route('incomes.index');
     }
 }

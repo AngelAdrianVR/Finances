@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ExpenseResource extends JsonResource
+class InvestmentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,8 +18,10 @@ class ExpenseResource extends JsonResource
             'id'=> $this->id,
             'created_at' => $this->created_at->isoFormat('DD MMM YYYY'),
             'quantity' => $this->quantity,
-            'concept' => $this->concept,
-            'category' => $this->category->name,
+            'type' => $this->type,
+            'profit' => $this->profit,
+            'platform' => $this->platform,
+            'release_date' => $this->release_date->isoFormat('DD MMM YYYY'),
         ];
     }
 }

@@ -33,8 +33,7 @@
                     required
                     autofocus
                 />
-                <PrimaryButton class="my-4 bg-stone-800">Agregar</PrimaryButton>
-                <!-- <InputError class="mt-2" :message="form.concept" /> -->
+                <PrimaryButton :disabled="form.processing" class="my-4 bg-stone-800">Agregar</PrimaryButton>
         </div>
      </div>
       </form>

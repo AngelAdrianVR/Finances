@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DebtResource;
 use App\Models\Debt;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -10,7 +11,7 @@ class DebtController extends Controller
 {
     public function index()
     {
-        $debts = Debt::all();
+        $debts = DebtResource::collection(Debt::latest()->get());
         return Inertia::render('Debt/Index',compact('debts'));
     }
 
@@ -36,5 +37,14 @@ class DebtController extends Controller
 
         return redirect()->route('debts.index');
         
+    }
+
+    public function destroy(Debt $debt)
+    {
+        $debt->delete();
+        request()->session()->flash('flash.banner', 'Se ha eliminado correctamente!');
+        request()->session()->flash('flash.bannerStyle', 'success'); 
+        return redirect()->route('debts.index');
+ 
     }
 }

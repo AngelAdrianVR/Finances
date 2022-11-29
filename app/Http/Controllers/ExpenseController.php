@@ -23,7 +23,7 @@ class ExpenseController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::latest()->get();
        return Inertia::render('Expense/Create',compact('categories'));
     }
 
@@ -42,5 +42,14 @@ class ExpenseController extends Controller
         request()->session()->flash('flash.bannerStyle', 'success');
 
         return redirect()->route('expenses.index');
+    }
+
+    public function destroy(Expense $expense)
+    {
+        $expense->delete();
+        request()->session()->flash('flash.banner', 'Se ha eliminado correctamente!');
+        request()->session()->flash('flash.bannerStyle', 'success'); 
+        return redirect()->route('expenses.index');
+
     }
 }

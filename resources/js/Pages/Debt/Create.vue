@@ -76,7 +76,7 @@
               required
               autofocus
             />
-            <PrimaryButton class="my-4 bg-stone-800">Agregar</PrimaryButton>
+            <PrimaryButton :disabled="form.processing" class="my-4 bg-stone-800">Agregar</PrimaryButton>
 
           </div>
         </div>

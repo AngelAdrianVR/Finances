@@ -11,7 +11,7 @@ class LoanController extends Controller
 {
    public function index()
    {
-      $loans = LoanResource::collection(Loan::latest()->get());
+      $loans = LoanResource::collection(Loan::latest()->paginate(30));
     return Inertia::render('Loan/Index',compact('loans'));
    }
 

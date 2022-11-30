@@ -11,7 +11,7 @@ class InvestmentController extends Controller
 {
     public function index()
     {
-        $investments = InvestmentResource::collection(Investment::latest()->get());
+        $investments = InvestmentResource::collection(Investment::latest()->paginate());
         return Inertia::render('Investment/Index', compact('investments'));
     }
 

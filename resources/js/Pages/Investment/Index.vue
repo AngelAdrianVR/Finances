@@ -10,7 +10,7 @@
     </div>
 
     <div
-      v-for="investment in investments"
+      v-for="investment in investments.data"
       :key="investment.id"
       class="
         flex flex-col
@@ -25,7 +25,7 @@
       "
     >
       <button
-        @click="deleteItem(investment)"
+        @click="delete_confirm = true; item_to_delete = investment;"
         class="
           text-red-500 text-lg
           font-bold
@@ -66,6 +66,28 @@
         Liberado
       </SecondaryButton>
     </div>
+    <Pagination :pagination="investments"/>
+
+  <ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
+    <template #title>
+      <div>¿Deseas continuar?</div>
+    </template>
+    <template #content>
+      <div>
+        Estás a punto de eliminar una tarea, una vez realizado ya no se podrá
+        recuperar
+      </div>
+    </template>
+    <template #footer>
+      <div class="flex justify-end">
+        <button @click="this.delete()" class="px-2 py-1 font-semibold border rounded border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition duration-200 mr-2">Eliminar</button>
+        <button class="px-2 py-1 font-semibold border rounded border-gray-500 text-gray-500 hover:bg-gray-100 transition duration-200" @click="delete_confirm = false">
+          Cancelar
+        </button>
+      </div>
+    </template>
+  </ConfirmationModal>
+
   </AppLayout>
 </template>
 
@@ -75,24 +97,34 @@ import PrimaryButton from "@/components/PrimaryButton.vue";
 import SecondaryButton from "@/components/SecondaryButton.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from '@inertiajs/inertia';
+import Pagination from "@/components/Pagination.vue";
+import ConfirmationModal from "@/components/ConfirmationModal.vue";
 
 export default {
   data() {
-    return {};
+    return {
+      delete_confirm: false,
+      item_to_delete: {},
+    };
   },
   components: {
     AppLayout,
     PrimaryButton,
     Link,
     SecondaryButton,
+    Pagination,
+    ConfirmationModal,
   },
   props: {
     investments: Object,
   },
   methods: {
-    deleteItem(investment) {
-      Inertia.delete(route("investments.destroy", investment));
-    },
+    delete() {
+      this.$inertia.delete(
+        this.route("investments.destroy", this.item_to_delete)
+      );
+      this.delete_confirm = false;
+  },
   },
 };
 </script>

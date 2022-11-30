@@ -10,7 +10,7 @@
     </div>
     <SearchInput />
     <div
-      v-for="income in incomes"
+      v-for="income in incomes.data"
       :key="income.id"
       class="
         relative
@@ -24,7 +24,7 @@
       "
     >
       <button
-        @click="deleteItem(income)"
+        @click="delete_confirm = true; item_to_delete = income;"
         class="
           text-red-500 text-lg
           font-bold
@@ -43,38 +43,70 @@
         x
       </button>
 
-      <div class="flex flex-row space-x-5 px-4 py-3 text-lg">
+      <div class="flex flex-row space-x-5 px-4 py-3 text-lg mb-3">
         <span class="font-bold uppercase"> {{ income.concept }} </span>
         <span> ${{ income.quantity }} </span>
         <span> {{ income.created_at }} </span>
       </div>
     </div>
+  <Pagination :pagination="incomes" />
+
+<ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
+    <template #title>
+      <div>¿Deseas continuar?</div>
+    </template>
+    <template #content>
+      <div>
+        Estás a punto de eliminar una tarea, una vez realizado ya no se podrá
+        recuperar
+      </div>
+    </template>
+    <template #footer>
+      <div class="flex justify-end">
+        <button @click="this.delete()" class="px-2 py-1 font-semibold border rounded border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition duration-200 mr-2">Eliminar</button>
+        <button class="px-2 py-1 font-semibold border rounded border-gray-500 text-gray-500 hover:bg-gray-100 transition duration-200" @click="delete_confirm = false">
+          Cancelar
+        </button>
+      </div>
+    </template>
+  </ConfirmationModal>
+
   </AppLayout>
 </template>
 
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import PrimaryButton from "@/components/PrimaryButton.vue";
+import Pagination from "@/components/Pagination.vue";
 import SearchInput from "@/components/SearchInput.vue";
+import ConfirmationModal from "@/components/ConfirmationModal.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from '@inertiajs/inertia';
 
 export default {
   data() {
-    return {};
+    return {
+      delete_confirm: false,
+      item_to_delete: {},
+      };
   },
   components: {
     AppLayout,
     PrimaryButton,
     Link,
     SearchInput,
+    Pagination,
+    ConfirmationModal,
   },
   props: {
     incomes: Object,
   },
   methods: {
-    deleteItem(income) {
-      Inertia.delete(route("incomes.destroy",income));
+    delete() {
+      this.$inertia.delete(
+        this.route("incomes.destroy", this.item_to_delete)
+      );
+      this.delete_confirm = false;
     },
   },
 };

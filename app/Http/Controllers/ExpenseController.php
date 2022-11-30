@@ -17,7 +17,7 @@ class ExpenseController extends Controller
 
     public function index()
     {
-        $expenses = ExpenseResource::collection(Expense::all());
+        $expenses = ExpenseResource::collection(Expense::latest()->paginate(30));
        return Inertia::render('Expense/Index', compact('expenses'));
     }
 

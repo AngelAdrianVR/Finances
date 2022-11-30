@@ -17,7 +17,8 @@ class IncomeController extends Controller
 
     public function index()
     {
-        $incomes = IncomeResource::collection(Income::latest()->get());
+        $incomes = IncomeResource::collection(Income::latest()->paginate(30));
+        // return $incomes;
         return Inertia::render('Income/Index', compact('incomes'));
     }
 

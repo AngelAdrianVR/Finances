@@ -1,5 +1,5 @@
 <template>
-  <AppLayout title="Egresos">
+  <AppLayout class="pb-4" title="Egresos">
     <div class="flex justify-between">
       <header class="block text-3xl text-gray-100 bg-stone-900 mt-5 ml-4">
         Egresos
@@ -10,7 +10,7 @@
     </div>
 
     <div
-      v-for="expense in expenses"
+      v-for="expense in expenses.data"
       :key="expense.id"
       class="relative
         container
@@ -22,7 +22,7 @@
         w-[90%]"
     >
       <button
-        @click="deleteItem(expense)"
+        @click="delete_confirm = true; item_to_delete = expense;"
         class="
           text-red-500 text-lg
           font-bold
@@ -47,6 +47,28 @@
         <span> {{ expense.category }} </span>
       </div>
     </div>
+    <Pagination :pagination="expenses" />
+
+  <ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
+    <template #title>
+      <div>¿Deseas continuar?</div>
+    </template>
+    <template #content>
+      <div>
+        Estás a punto de eliminar una tarea, una vez realizado ya no se podrá
+        recuperar
+      </div>
+    </template>
+    <template #footer>
+      <div class="flex justify-end">
+        <button @click="this.delete()" class="px-2 py-1 font-semibold border rounded border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition duration-200 mr-2">Eliminar</button>
+        <button class="px-2 py-1 font-semibold border rounded border-gray-500 text-gray-500 hover:bg-gray-100 transition duration-200" @click="delete_confirm = false">
+          Cancelar
+        </button>
+      </div>
+    </template>
+  </ConfirmationModal>
+
   </AppLayout>
 </template>
 
@@ -55,23 +77,33 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import PrimaryButton from "@/components/PrimaryButton.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from '@inertiajs/inertia';
+import Pagination from "@/components/Pagination.vue";
+import ConfirmationModal from "@/components/ConfirmationModal.vue";
 
 export default {
   data() {
-    return {};
+    return {
+      delete_confirm: false,
+      item_to_delete: {},
+    };
   },
   components: {
     AppLayout,
     PrimaryButton,
     Link,
+    Pagination,
+    ConfirmationModal,
   },
   props: {
     expenses: Object,
   },
   methods: {
-    deleteItem(expense) {
-      Inertia.delete(route("expenses.destroy", expense));
-    },
+       delete() {
+      this.$inertia.delete(
+        this.route("expenses.destroy", this.item_to_delete)
+      );
+      this.delete_confirm = false;
   },
+},
 };
 </script>

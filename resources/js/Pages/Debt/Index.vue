@@ -74,8 +74,8 @@
       </template>
       <template #content>
         <div>
-          Estás a punto de eliminar una tarea, una vez realizado ya no se podrá
-          recuperar
+          Estás a punto de eliminar un registro de Deuda, una vez realizado ya no se podrá
+          recuperar.
         </div>
       </template>
       <template #footer>

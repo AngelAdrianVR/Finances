@@ -8,7 +8,12 @@
         ><PrimaryButton class="mr-2 mt-4">Crear +</PrimaryButton></Link
       >
     </div>
-    <SearchInput />
+    <SearchInput 
+      :filters="filters"
+      filterURL="/incomes"
+       />
+
+    <p class="text-gray-100">{{ search }}</p> 
     <div
       v-for="income in incomes.data"
       :key="income.id"
@@ -17,6 +22,8 @@
         container
         mx-auto
         bg-stone-700
+        border
+        border-gray-300
         rounded-lg
         h-20
         mt-4
@@ -57,7 +64,7 @@
     </template>
     <template #content>
       <div>
-        Estás a punto de eliminar una tarea, una vez realizado ya no se podrá
+        Estás a punto de eliminar un registro de ingreso. Una vez realizado ya no se podrá
         recuperar
       </div>
     </template>
@@ -88,6 +95,7 @@ export default {
     return {
       delete_confirm: false,
       item_to_delete: {},
+      search: "",
       };
   },
   components: {
@@ -100,6 +108,8 @@ export default {
   },
   props: {
     incomes: Object,
+    filters: Object,
+    filterURL: String,
   },
   methods: {
     delete() {

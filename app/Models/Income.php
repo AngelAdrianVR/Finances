@@ -13,4 +13,16 @@ class Income extends Model
         'quantity',
         'concept',
     ];
+
+    // query scopes
+    public function scopeFilter($query, $filters)
+    {
+        $query->when($filters["search"] ?? null, function($query, $search){
+            $query->where('concept', 'LIKE', "%$search%")
+                  ->orWhere('quantity', 'LIKE', "%$search%")
+                  ->orWhere('created_at', 'LIKE', "%$search%");
+
+        });
+    }
 }
+

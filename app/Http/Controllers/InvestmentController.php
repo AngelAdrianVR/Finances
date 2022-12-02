@@ -13,7 +13,7 @@ class InvestmentController extends Controller
     {
         $filters = $request->all('search');
         $investments = InvestmentResource::collection(Investment::filter($filters)
-                    ->latest()->paginate(30));
+        ->latest()->paginate(30));
         return Inertia::render('Investment/Index', compact('investments','filters'));
     }
 

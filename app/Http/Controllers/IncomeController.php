@@ -15,11 +15,14 @@ class IncomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $incomes = IncomeResource::collection(Income::latest()->paginate(30));
+        $filters = $request->all('search');
+
+        $incomes = IncomeResource::collection(Income::filter($filters)
+                    ->latest()->paginate(30));
         // return $incomes;
-        return Inertia::render('Income/Index', compact('incomes'));
+        return Inertia::render('Income/Index', compact('incomes','filters'));
     }
 
     public function create()

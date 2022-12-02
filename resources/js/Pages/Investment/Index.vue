@@ -74,7 +74,7 @@
     </template>
     <template #content>
       <div>
-        Estás a punto de eliminar una tarea, una vez realizado ya no se podrá
+        Estás a punto de eliminar un regostro de inversión. Una vez realizado ya no se podrá
         recuperar
       </div>
     </template>

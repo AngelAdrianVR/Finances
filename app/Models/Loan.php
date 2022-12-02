@@ -21,4 +21,14 @@ class Loan extends Model
         'payed_at',
         'pay_date',
     ];
+
+     // query scopes
+     public function scopeFilter($query, $filters)
+     {
+         $query->when($filters["search"] ?? null, function($query, $search){
+             $query->where('debtor', 'LIKE', "%$search%")
+                   ->orWhere('quantity', 'LIKE', "%$search%")
+                   ->orWhere('created_at', 'LIKE', "%$search%");
+         });
+     }
 }

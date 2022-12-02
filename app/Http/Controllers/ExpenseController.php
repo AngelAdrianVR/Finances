@@ -15,10 +15,12 @@ class ExpenseController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $expenses = ExpenseResource::collection(Expense::latest()->paginate(30));
-       return Inertia::render('Expense/Index', compact('expenses'));
+        $filters = $request->all('search');
+        $expenses = ExpenseResource::collection(Expense::filter($filters)
+                    ->latest()->paginate(30));
+       return Inertia::render('Expense/Index', compact('expenses','filters'));
     }
 
     public function create()

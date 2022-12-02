@@ -9,10 +9,12 @@ use Inertia\Inertia;
 
 class DebtController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $debts = DebtResource::collection(Debt::latest()->paginate(30));
-        return Inertia::render('Debt/Index',compact('debts'));
+        $filters = $request->all('search');
+        $debts = DebtResource::collection(Debt::filter($filters)
+                ->latest()->paginate(30));
+        return Inertia::render('Debt/Index',compact('debts','filters'));
     }
 
     public function create()

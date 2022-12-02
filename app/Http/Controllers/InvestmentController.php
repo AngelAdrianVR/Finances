@@ -9,10 +9,12 @@ use Inertia\Inertia;
 
 class InvestmentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $investments = InvestmentResource::collection(Investment::latest()->paginate());
-        return Inertia::render('Investment/Index', compact('investments'));
+        $filters = $request->all('search');
+        $investments = InvestmentResource::collection(Investment::filter($filters)
+                    ->latest()->paginate(30));
+        return Inertia::render('Investment/Index', compact('investments','filters'));
     }
 
     public function create()

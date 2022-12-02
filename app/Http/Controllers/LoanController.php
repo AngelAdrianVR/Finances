@@ -9,10 +9,12 @@ use Inertia\Inertia;
 
 class LoanController extends Controller
 {
-   public function index()
+   public function index(Request  $request)
    {
-      $loans = LoanResource::collection(Loan::latest()->paginate(30));
-    return Inertia::render('Loan/Index',compact('loans'));
+      $filters = $request->all('search');
+      $loans = LoanResource::collection(Loan::filter($filters)
+               ->latest()->paginate(30));
+    return Inertia::render('Loan/Index',compact('loans','filters'));
    }
 
    public function create()

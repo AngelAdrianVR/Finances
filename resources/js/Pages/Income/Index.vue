@@ -13,7 +13,6 @@
       filterURL="/incomes"
        />
 
-    <p class="text-gray-100">{{ search }}</p> 
     <div
       v-for="income in incomes.data"
       :key="income.id"
@@ -22,12 +21,14 @@
         container
         mx-auto
         bg-stone-700
-        border
-        border-gray-300
+        border-2
+        border-gray-500
         rounded-lg
         h-20
         mt-4
         w-[90%]
+        flex
+        items-center
       "
     >
       <button
@@ -53,7 +54,9 @@
       <div class="flex flex-row space-x-5 px-4 py-3 text-lg mb-3">
         <span class="font-bold uppercase"> {{ income.concept }} </span>
         <span> ${{ income.quantity }} </span>
-        <span> {{ income.created_at }} </span>
+      </div>
+      <div class="">
+        <small class="flex flex-row justify-end text-right"> {{ income.created_at }} </small>
       </div>
     </div>
   <Pagination :pagination="incomes" />
@@ -95,7 +98,7 @@ export default {
     return {
       delete_confirm: false,
       item_to_delete: {},
-      search: "",
+      
       };
   },
   components: {

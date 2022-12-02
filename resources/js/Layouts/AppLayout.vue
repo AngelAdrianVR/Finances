@@ -32,7 +32,7 @@ const logout = () => {
     <div>
     <Banner />
 
-        <div class="min-h-screen bg-stone-900 text-gray-300 pb-2">
+        <div class="min-h-screen bg-stone-900 text-gray-300 pb-4">
             <nav class="bg-stone border-b border-indigo-600/100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

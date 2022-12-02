@@ -9,6 +9,11 @@
       >
     </div>
 
+    <SearchInput 
+      :filters="filters"
+      filterURL="/loans"
+       />
+
     <div
       v-for="loan in loans.data"
       :key="loan.id"
@@ -17,6 +22,8 @@
         container
         mx-auto
         bg-stone-700
+        border-2
+        border-gray-500
         rounded-lg
         h-60
         mt-8
@@ -98,6 +105,7 @@ import { Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
 import Pagination from "@/components/Pagination.vue";
 import ConfirmationModal from "@/components/ConfirmationModal.vue";
+import SearchInput from "@/components/SearchInput.vue";
 
 export default {
   data() {
@@ -113,9 +121,12 @@ export default {
     SecondaryButton,
     Pagination,
     ConfirmationModal,
+    SearchInput,
   },
   props: {
     loans: Object,
+    filters: Object,
+    filterURL: String,
   },
   methods: {
     delete() {

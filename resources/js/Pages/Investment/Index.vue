@@ -9,6 +9,11 @@
       >
     </div>
 
+      <SearchInput 
+      :filters="filters"
+      filterURL="/investments"
+       />
+
     <div
       v-for="investment in investments.data"
       :key="investment.id"
@@ -17,9 +22,11 @@
         container
         mx-auto
         bg-stone-700
+        border-2
+        border-gray-500
         rounded-lg
         h-60
-        mt-8
+        mt-4
         w-[90%]
         relative
       "
@@ -99,6 +106,7 @@ import { Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from '@inertiajs/inertia';
 import Pagination from "@/components/Pagination.vue";
 import ConfirmationModal from "@/components/ConfirmationModal.vue";
+import SearchInput from "@/components/SearchInput.vue";
 
 export default {
   data() {
@@ -114,9 +122,12 @@ export default {
     SecondaryButton,
     Pagination,
     ConfirmationModal,
+    SearchInput,
   },
   props: {
     investments: Object,
+    filters: Object,
+    filterURL: String,
   },
   methods: {
     delete() {

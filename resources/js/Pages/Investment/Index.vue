@@ -23,13 +23,13 @@
         mx-auto
         bg-stone-700
         border-2
-        border-gray-500
         rounded-lg
-        h-60
+        h-52
         mt-4
         w-[90%]
         relative
       "
+      :class="investment.released_at ? 'border-green-600' : 'border-indigo-600'"
     >
       <button
         @click="delete_confirm = true; item_to_delete = investment;"
@@ -59,12 +59,14 @@
       <div class="flex flex-row space-x-5 px-4 py-3 text-lg">
         <span> Fecha liberación: {{ investment.release_date }} </span>
         <span class="text-sm"> creado: {{ investment.created_at }} </span>
+        <span v-if="investment.releaded_at" class="text-sm"> liberado: {{ investment.released_at }} </span>
       </div>
       <SecondaryButton
+      v-if="!investment.payed_at"
         class="
           flex
           justify-center
-          bg-green-600
+          bg-green-700
           mx-20
           text-center text-white
           font-bold

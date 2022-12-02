@@ -27,8 +27,7 @@
         h-20
         mt-4
         w-[90%]
-        flex
-        items-center
+
       "
     >
       <button
@@ -51,12 +50,12 @@
         x
       </button>
 
-      <div class="flex flex-row space-x-5 px-4 py-3 text-lg mb-3">
+      <div class="flex flex-row space-x-10 px-4 py-3 text-lg mb-3">
         <span class="font-bold uppercase"> {{ income.concept }} </span>
         <span> ${{ income.quantity }} </span>
       </div>
       <div class="">
-        <small class="flex flex-row justify-end text-right"> {{ income.created_at }} </small>
+        <p class="flex justify-end px-2 text-sm text-gray-400"> {{ income.created_at }} </p>
       </div>
     </div>
   <Pagination :pagination="incomes" />

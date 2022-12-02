@@ -15,6 +15,7 @@ class Investment extends Model
         'profit',
         'platform',
         'release_date',
+        'released_at',
     ];
 
     protected $dates = [

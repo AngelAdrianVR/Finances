@@ -47,11 +47,14 @@
       >
         x
       </button>
+
       <div class="flex flex-row space-x-5 px-4 py-3 text-lg">
         <span class="font-bold uppercase"> {{ expense.concept }} </span>
         <span> ${{ expense.quantity }} </span>
-        <span> {{ expense.created_at }} </span>
         <span> {{ expense.category }} </span>
+      </div>
+      <div>
+        <p class="flex justify-end px-2 text-sm text-gray-400"> {{ expense.created_at }} </p>
       </div>
     </div>
     <Pagination :pagination="expenses" />

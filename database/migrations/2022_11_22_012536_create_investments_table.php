@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('profit');
             $table->string('platform');
             $table->date('release_date')->nullable();
+            $table->date('released_at')->nullable();
             $table->timestamps();
         });
     }

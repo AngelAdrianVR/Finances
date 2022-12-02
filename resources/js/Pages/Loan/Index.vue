@@ -23,13 +23,13 @@
         mx-auto
         bg-stone-700
         border-2
-        border-gray-500
         rounded-lg
-        h-60
+        h-44
         mt-8
         w-[90%]
         relative
       "
+      :class="loan.payed_at ? 'border-green-600' : 'border-red-600'"
     >
       <button
         @click="delete_confirm = true; item_to_delete = loan;"
@@ -53,24 +53,28 @@
       <div class="flex flex-row space-x-5 px-4 py-3 text-lg">
         <span class="font-bold uppercase"> {{ loan.debtor }} </span>
         <span> ${{ loan.quantity }} </span>
-        <span> {{ loan.created_at }} </span>
       </div>
-      <div class="flex flex-row space-x-5 px-4 py-3 text-lg">
-        <span> Fecha promesa: {{ loan.pay_date }} </span>
-        <span v-if="loan.payed_at"> Pagado el: {{ loan.payed_at }} </span>
+      <div class="flex flex-col space-x-5 px-4 py-3 text-base">
+        <span > Fecha promesa: {{ loan.pay_date }} </span>
+        <span class="font-bold" v-if="loan.payed_at"> Pagado el: {{ loan.payed_at }} </span>
       </div>
       <SecondaryButton
+        v-if="!loan.payed_at"
         class="
           flex
           justify-center
-          bg-green-600
+          bg-green-700
           mx-20
           text-center text-white
           font-bold
+          mb-4
         "
       >
         Pagado
       </SecondaryButton>
+      <div>
+        <p class="flex justify-end px-2 text-sm text-gray-400"> {{ loan.created_at }} </p>
+      </div>
     </div>
     <Pagination :pagination="loans"/>
 

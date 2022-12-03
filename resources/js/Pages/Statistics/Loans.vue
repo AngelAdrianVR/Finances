@@ -1,6 +1,6 @@
 <template>
   <AppLayout title="Estadisticas-Préstamos">
-        <YearTable />
+        <YearTable :color="2"/>
   </AppLayout>
 </template>
 

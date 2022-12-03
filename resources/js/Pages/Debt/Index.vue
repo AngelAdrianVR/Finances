@@ -15,7 +15,7 @@
        />
 
     <div
-      v-for="debt in debts.data"
+      v-for="(debt, index) in debts.data"
       :key="debt.id"
       class="
         flex flex-col
@@ -60,6 +60,7 @@
         <span v-if="debt.payed_at"> Pagado el: {{ debt.payed_at }} </span>
       </div>
       <SecondaryButton
+      @click="payDebt(debt.id, index)"
       v-if="!debt.payed_at"
         class="
           flex
@@ -140,6 +141,14 @@ export default {
         this.route("debts.destroy", this.item_to_delete)
       );
       this.delete_confirm = false;
+  },
+  async payDebt(debt_id, item_index){
+    try {
+      const response = await axios.put(route('debts.mark-as-payed',debt_id));
+      this.debt.data[item_index] = response.data.item;
+    } catch (error) {
+      console.log(error);      
+    }
   },
   },
 };

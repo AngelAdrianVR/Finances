@@ -22,6 +22,7 @@ class InvestmentResource extends JsonResource
             'profit' => $this->profit,
             'platform' => $this->platform,
             'release_date' => $this->release_date->isoFormat('DD MMM YYYY'),
+            'released_at' => $this->released_at,
         ];
     }
 }

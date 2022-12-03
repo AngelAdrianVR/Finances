@@ -49,4 +49,15 @@ class DebtController extends Controller
         return redirect()->route('debts.index');
  
     }
+
+    public function markAsPayed(Debt $debt)
+   {
+       $debt->update([
+         'payed_at'=>now(),
+       ]);
+       request()->session()->flash('flash.banner', 'Se ha marcado como pagado');
+       request()->session()->flash('flash.bannerStyle', 'success'); 
+       return response()->json(['item'=>DebtResource::make($debt)]);
+
+   }
 }

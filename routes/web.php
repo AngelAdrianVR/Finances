@@ -41,6 +41,11 @@ Route::middleware([
 });
 
 Route::get('/statistics', [StatisticController::class, 'index'])->name('statistics.index');
+Route::get('/statistics/incomes', [StatisticController::class, 'incomes'])->name('statistics.incomes');
+Route::get('/statistics/expenses', [StatisticController::class, 'expenses'])->name('statistics.expenses');
+Route::get('/statistics/loans', [StatisticController::class, 'loans'])->name('statistics.loans');
+Route::get('/statistics/debts', [StatisticController::class, 'debts'])->name('statistics.debts');
+Route::get('/statistics/investments', [StatisticController::class, 'investments'])->name('statistics.investments');
 
 
 Route::get('/incomes', [IncomeController::class, 'index'])->name('incomes.index');
@@ -58,14 +63,17 @@ Route::get('/loans',[LoanController::class, 'index'])->name('loans.index');
 Route::get('/loans/create',[LoanController::class, 'create'])->name('loans.create');
 Route::post('/loans/store',[LoanController::class, 'store'])->name('loans.store');
 Route::delete('/loans/{loan}',[LoanController::class, 'destroy'])->name('loans.destroy');
+Route::put('/loans/{loan}/payed',[LoanController::class, 'markAsPayed'])->name('loans.mark-as-payed');
 
 Route::get('/debts',[DebtController::class, 'index'])->name('debts.index');
 Route::get('/debts/create',[DebtController::class, 'create'])->name('debts.create');
 Route::post('/debts/store',[DebtController::class, 'store'])->name('debts.store');
 Route::delete('/debts/{debt}',[DebtController::class, 'destroy'])->name('debts.destroy');
+Route::put('/debts/{debt}/payed',[DebtController::class, 'markAsPayed'])->name('debts.mark-as-payed');
 
 Route::get('/investments',[InvestmentController::class, 'index'])->name('investments.index');
 Route::get('/investments/create',[InvestmentController::class, 'create'])->name('investments.create');
 Route::post('/investments/store',[InvestmentController::class, 'store'])->name('investments.store');
 Route::delete('/investments/{investment}',[InvestmentController::class, 'destroy'])->name('investments.destroy');
+Route::put('/investments/{investment}/payed',[InvestmentController::class, 'markAsPayed'])->name('investments.mark-as-payed');
 

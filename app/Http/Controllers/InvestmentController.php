@@ -49,4 +49,15 @@ class InvestmentController extends Controller
        return redirect()->route('investments.index');
 
    }
+
+   public function markAsPayed(Investment $investment)
+   {
+       $investment->update([
+         'released_at'=>now(),
+       ]);
+       request()->session()->flash('flash.banner', 'Se ha marcado como pagado');
+       request()->session()->flash('flash.bannerStyle', 'success'); 
+       return response()->json(['item'=>InvestmentResource::make($investment)]);
+
+   }
 }

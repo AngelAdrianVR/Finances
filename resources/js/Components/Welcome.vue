@@ -29,7 +29,7 @@
               w-full
               sm:w-1/4
               p-5
-              bg-gray-600
+              bg-gray-700
               rounded-md
               shadow-xl
               border-l-4 border-blue-300
@@ -75,7 +75,7 @@
               w-full
               sm:w-1/4
               p-5
-              bg-gray-600
+              bg-gray-700
               rounded-md
               shadow-xl
               border-l-4 border-green-300
@@ -121,7 +121,7 @@
               w-full
               sm:w-1/4
               p-5
-              bg-gray-600
+              bg-gray-700
               rounded-md
               shadow-xl
               border-l-4 border-red-400
@@ -174,7 +174,7 @@
               w-full
               sm:w-1/4
               p-5
-              bg-gray-600
+              bg-gray-700
               rounded-md
               shadow-xl
               border-l-4 border-purple-300
@@ -220,7 +220,7 @@
               w-full
               sm:w-1/4
               p-5
-              bg-gray-600
+              bg-gray-700
               rounded-md
               shadow-xl
               border-l-4 border-orange-300
@@ -266,7 +266,7 @@
               w-full
               sm:w-1/4
               p-5
-              bg-gray-600
+              bg-gray-700
               rounded-md
               shadow-xl
               border-l-4 border-rose-300

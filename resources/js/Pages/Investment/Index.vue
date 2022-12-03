@@ -15,7 +15,7 @@
        />
 
     <div
-      v-for="investment in investments.data"
+      v-for="(investment, index) in investments.data"
       :key="investment.id"
       class="
         flex flex-col
@@ -56,13 +56,13 @@
         <span> ${{ investment.quantity }} </span>
         <span> ${{ investment.profit }} </span>
       </div>
-      <div class="flex flex-row space-x-5 px-4 py-3 text-lg">
+      <div class="flex flex-col space-x-5 px-4 py-3 text-lg">
         <span> Fecha liberación: {{ investment.release_date }} </span>
-        <span class="text-sm"> creado: {{ investment.created_at }} </span>
-        <span v-if="investment.releaded_at" class="text-sm"> liberado: {{ investment.released_at }} </span>
+        <span v-if="investment.released_at" class="font-bold text-left"> liberado: {{ investment.released_at }} </span>
       </div>
       <SecondaryButton
-      v-if="!investment.payed_at"
+      @click="releaseInvestment(investment.id, index)"
+      v-if="!investment.released_at"
         class="
           flex
           justify-center
@@ -70,10 +70,15 @@
           mx-20
           text-center text-white
           font-bold
+          mt-2
+          mb-3
         "
       >
         Liberado
       </SecondaryButton>
+      <div>
+        <p class="flex justify-end px-2 text-sm text-gray-400"> {{ investment.created_at }} </p>
+      </div>
     </div>
     <Pagination :pagination="investments"/>
 
@@ -137,6 +142,14 @@ export default {
         this.route("investments.destroy", this.item_to_delete)
       );
       this.delete_confirm = false;
+  },
+  async releaseInvestment(investment_id, item_index){
+    try {
+      const response = await axios.put(route('investments.mark-as-payed',investment_id));
+      this.investments.data[item_index] = response.data.item;
+    } catch (error) {
+      console.log(error);      
+    }
   },
   },
 };

@@ -46,4 +46,15 @@ class LoanController extends Controller
        return redirect()->route('loans.index');
 
    }
+
+   public function markAsPayed(Loan $loan)
+   {
+       $loan->update([
+         'payed_at'=>now(),
+       ]);
+       request()->session()->flash('flash.banner', 'Se ha marcado como pagado');
+       request()->session()->flash('flash.bannerStyle', 'success'); 
+       return response()->json(['item'=>LoanResource::make($loan)]);
+
+   }
 }

@@ -6,8 +6,8 @@
         <table class="text-left w-full border-collapse rounded-lg text-gray-800"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
           <thead>
             <tr>
-              <th class="py-4 px-6 bg-green-300 font-bold uppercase text-sm text-green-800 border-b-2 border-green-600">Mes</th>
-              <th class="py-4 px-6 text-center bg-green-300 font-bold uppercase text-sm text-green-800 border-b-2 border-green-600">Ingreso Total</th>
+              <th :class="type[color]" class="py-4 px-6 font-bold uppercase text-sm border-b-2">Mes</th>
+              <th :class="type[color]" class="py-4 px-6 text-center  font-bold uppercase text-sm  border-b-2">Total</th>
             </tr>
           </thead>
           <tbody>
@@ -109,9 +109,17 @@ export default {
                 'Noviembre',
                 'Diciembre',
             ],
+            type:[
+              'bg-green-300 text-green-800 border-green-600',
+              'bg-red-300 text-red-800 border-red-600',
+              'bg-purple-300 text-purple-800 border-purple-600',
+              'bg-orange-300 text-orange-800 border-orange-600',
+              'bg-pink-300 text-pink-800 border-pink-600',
+            ],
         };
     },
     props:{
+      color: Number,
 
     },
     methods:{

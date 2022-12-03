@@ -1,6 +1,6 @@
 <template>
   <AppLayout title="Estadisticas-Inversiones">
-        <YearTable />
+        <YearTable :color="4"/>
   </AppLayout>
 </template>
 

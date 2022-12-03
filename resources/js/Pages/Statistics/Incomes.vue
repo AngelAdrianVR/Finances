@@ -1,6 +1,9 @@
 <template>
   <AppLayout title="Estadisticas-Ingresos">
-        <YearTable />
+    <YearTable :color="0" />
+
+    <Chart />
+
   </AppLayout>
 </template>
 
@@ -9,14 +12,12 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import PrimaryButton from "@/components/PrimaryButton.vue";
 import Pagination from "@/components/Pagination.vue";
 import YearTable from "@/components/YearTable.vue";
+import Chart from "@/components/Chart.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
   data() {
-    return {
-
-      
-      };
+    return {};
   },
   components: {
     AppLayout,
@@ -24,13 +25,9 @@ export default {
     PrimaryButton,
     Pagination,
     Link,
-
+    Chart,
   },
-  props: {
-
-  },
-  methods: {
-
-  },
+  props: {},
+  methods: {},
 };
 </script>

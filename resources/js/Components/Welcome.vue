@@ -100,7 +100,7 @@
                     rounded-full
                   "
                 >
-                  25%
+                  ${{ total_incomes }}
                 </div>
               </div>
             </div>
@@ -151,7 +151,7 @@
                     rounded-full
                   "
                 >
-                  50%
+                  ${{ total_expenses }}
                 </div>
               </div>
             </div>
@@ -199,7 +199,7 @@
                     rounded-full
                   "
                 >
-                  25%
+                  ${{ total_loans }}
                 </div>
               </div>
             </div>
@@ -245,7 +245,7 @@
                     rounded-full
                   "
                 >
-                  25%
+                  ${{ total_debts }}
                 </div>
               </div>
             </div>
@@ -291,7 +291,7 @@
                     rounded-full
                   "
                 >
-                  25%
+                  ${{ total_investments }}
                 </div>
               </div>
             </div>
@@ -316,7 +316,13 @@ export default {
   components: {
     Link,
   },
-  props: {},
+  props: {
+    total_incomes: String,
+    total_expenses: String,
+    total_loans: String,
+    total_debts: String,
+    total_investments: String,
+  },
   methods: {},
 };
 </script>

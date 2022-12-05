@@ -6,6 +6,11 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\StatisticController;
+use App\Models\Debt;
+use App\Models\Expense;
+use App\Models\Income;
+use App\Models\Investment;
+use App\Models\Loan;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,8 +40,15 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+    
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        $total_incomes = number_format(Income::all()->sum('quantity'),2);
+        $total_expenses = number_format(Expense::all()->sum('quantity'),2);
+        $total_loans = number_format(Loan::all()->sum('quantity'),2);
+        $total_debts = number_format(Debt::all()->sum('quantity'),2);
+        $total_investments = number_format(Investment::all()->sum('quantity'),2);
+        
+        return Inertia::render('Dashboard',compact('total_incomes','total_expenses','total_loans','total_debts','total_investments'));
     })->name('dashboard');
 });
 

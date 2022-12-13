@@ -1,7 +1,3 @@
-<script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
-import Welcome from '@/Components/Welcome.vue';
-</script>
 
 <template>
     <AppLayout title="Dashboard">
@@ -9,9 +5,33 @@ import Welcome from '@/Components/Welcome.vue';
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <Welcome />
+                    <Welcome :data="[total_incomes,total_expenses,total_loans,total_debts,total_investments]"/>
                 </div>
             </div>
         </div>
     </AppLayout>
 </template>
+
+<script>
+import AppLayout from '@/Layouts/AppLayout.vue';
+import Welcome from '@/Components/Welcome.vue';
+
+export default {
+    data(){
+        return{
+
+        }
+    },
+    components:{
+        AppLayout,
+        Welcome,
+    },
+    props:{
+        total_incomes: Number,
+        total_expenses: Number,
+        total_loans: Number,
+        total_debts: Number,
+        total_investments: Number,
+    },
+}
+</script>

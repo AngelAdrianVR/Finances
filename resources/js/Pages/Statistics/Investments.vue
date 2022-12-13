@@ -1,6 +1,6 @@
 <template>
   <AppLayout title="Estadisticas-Inversiones">
-        <YearTable :color="4"/>
+        <YearTable :color="4" :data="filtered_investments"/>
   </AppLayout>
 </template>
 
@@ -27,7 +27,7 @@ export default {
 
   },
   props: {
-
+    filtered_investments: Array,
   },
   methods: {
 

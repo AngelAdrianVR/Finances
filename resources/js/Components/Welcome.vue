@@ -100,7 +100,7 @@
                     rounded-full
                   "
                 >
-                  ${{ total_incomes }}
+                  ${{ data[0] }}
                 </div>
               </div>
             </div>
@@ -151,7 +151,7 @@
                     rounded-full
                   "
                 >
-                  ${{ total_expenses }}
+                  ${{ data[1] }}
                 </div>
               </div>
             </div>
@@ -199,7 +199,7 @@
                     rounded-full
                   "
                 >
-                  ${{ total_loans }}
+                  ${{ data[2] }}
                 </div>
               </div>
             </div>
@@ -245,7 +245,7 @@
                     rounded-full
                   "
                 >
-                  ${{ total_debts }}
+                  ${{ data[3] }}
                 </div>
               </div>
             </div>
@@ -291,7 +291,7 @@
                     rounded-full
                   "
                 >
-                  ${{ total_investments }}
+                  ${{ data[4] }}
                 </div>
               </div>
             </div>
@@ -317,11 +317,7 @@ export default {
     Link,
   },
   props: {
-    total_incomes: String,
-    total_expenses: String,
-    total_loans: String,
-    total_debts: String,
-    total_investments: String,
+    data: Array,
   },
   methods: {},
 };

@@ -1,6 +1,6 @@
 <template>
   <AppLayout title="Estadisticas-Préstamos">
-        <YearTable :color="2"/>
+        <YearTable :color="2" :data="filtered_loans"/>
   </AppLayout>
 </template>
 
@@ -27,7 +27,7 @@ export default {
 
   },
   props: {
-
+    filtered_loans: Array,
   },
   methods: {
 

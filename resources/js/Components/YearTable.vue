@@ -11,76 +11,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="hover:bg-grey-lighter">
-              <td class="py-4 px-6 border-b border-grey-light">Enero</td>
+            <tr v-for="(month,index) in months" :key="index" class="hover:bg-grey-lighter">
+              <td class="py-4 px-6 border-b border-grey-light">{{ month }}</td>
               <td class="py-4 px-6 text-center border-b border-grey-light">
-                11980
-              </td>
-            </tr>
-            <tr class="hover:bg-grey-lighter">
-              <td class="py-4 px-6 border-b border-grey-light">Febrero</td>
-              <td class="py-4 px-6 text-center border-b border-grey-light">
-                340
-              </td>
-            </tr>
-            <tr class="hover:bg-grey-lighter">
-              <td class="py-4 px-6 border-b border-grey-light">Marzo</td>
-              <td class="py-4 px-6 text-center border-b border-grey-light">
-                901
-              </td>
-            </tr>
-            <tr class="hover:bg-grey-lighter">
-              <td class="py-4 px-6 border-b border-grey-light">Abril</td>
-              <td class="py-4 px-6 text-center border-b border-grey-light">
-                11950
-              </td>
-            </tr>
-            <tr class="hover:bg-grey-lighter">
-              <td class="py-4 px-6 border-b border-grey-light">Mayo</td>
-              <td class="py-4 px-6 text-center border-b border-grey-light">
-                459
-              </td>
-            </tr>
-            <tr class="hover:bg-grey-lighter">
-              <td class="py-4 px-6 border-b border-grey-light">Junio</td>
-              <td class="py-4 px-6 text-center border-b border-grey-light">
-                459
-              </td>
-            </tr>
-            <tr class="hover:bg-grey-lighter">
-              <td class="py-4 px-6 border-b border-grey-light">Julio</td>
-              <td class="py-4 px-6 text-center border-b border-grey-light">
-                459
-              </td>
-            </tr>
-            <tr class="hover:bg-grey-lighter">
-              <td class="py-4 px-6 border-b border-grey-light">Agosto</td>
-              <td class="py-4 px-6 text-center border-b border-grey-light">
-                459
-              </td>
-            </tr>
-            <tr class="hover:bg-grey-lighter">
-              <td class="py-4 px-6 border-b border-grey-light">Septiembre</td>
-              <td class="py-4 px-6 text-center border-b border-grey-light">
-                459
-              </td>
-            </tr>
-            <tr class="hover:bg-grey-lighter">
-              <td class="py-4 px-6 border-b border-grey-light">Octubre</td>
-              <td class="py-4 px-6 text-center border-b border-grey-light">
-                459
-              </td>
-            </tr>
-            <tr class="hover:bg-grey-lighter">
-              <td class="py-4 px-6 border-b border-grey-light">Noviembre</td>
-              <td class="py-4 px-6 text-center border-b border-grey-light">
-                459
-              </td>
-            </tr>
-            <tr class="hover:bg-grey-lighter">
-              <td class="py-4 px-6 border-b border-grey-light">Diciembre</td>
-              <td class="py-4 px-6 text-center border-b border-grey-light">
-                459
+                {{data[index]}}
               </td>
             </tr>
           </tbody>
@@ -120,6 +54,7 @@ export default {
     },
     props:{
       color: Number,
+      data: Array,
 
     },
     methods:{

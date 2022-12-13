@@ -1,6 +1,6 @@
 <template>
   <AppLayout title="Estadisticas-Deudas">
-        <YearTable :color="3"/>
+        <YearTable :color="3" :data="filtered_debts"/>
   </AppLayout>
 </template>
 
@@ -27,7 +27,7 @@ export default {
 
   },
   props: {
-
+    filtered_debts: Array,
   },
   methods: {
 

@@ -175,6 +175,10 @@ const logout = () => {
                         </div>
 
                         <!-- Hamburger -->
+                        <div class="flex items-center sm:hidden mr-auto space-x-2">
+                        <img src="@/images/xphere_Iso_logo.png" alt="Logotipo_xphere" class="w-[10%]" >
+                        <p class="font-thin">Finances.Xphere</p>
+                        </div>
                         <div class="-mr-2 flex items-center sm:hidden">
                             <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-200 hover:text-stone-700 hover:bg-stone-500 focus:outline-none focus:bg-gray-700 focus:text-gray-700 transition" @click="showingNavigationDropdown = ! showingNavigationDropdown">
                                 <svg
@@ -237,10 +241,10 @@ const logout = () => {
                             </div>
 
                             <div>
-                                <div class="font-medium text-base text-gray-800">
+                                <div class="font-medium text-base text-indigo-500">
                                     {{ $page.props.user.name }}
                                 </div>
-                                <div class="font-medium text-sm text-gray-500">
+                                <div class="font-medium text-sm text-indigo-700">
                                     {{ $page.props.user.email }}
                                 </div>
                             </div>

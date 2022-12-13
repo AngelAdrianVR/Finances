@@ -42,11 +42,11 @@ Route::middleware([
 ])->group(function () {
     
     Route::get('/dashboard', function () {
-        $total_incomes = number_format(Income::all()->sum('quantity'),2);
-        $total_expenses = number_format(Expense::all()->sum('quantity'),2);
-        $total_loans = number_format(Loan::all()->sum('quantity'),2);
-        $total_debts = number_format(Debt::all()->sum('quantity'),2);
-        $total_investments = number_format(Investment::all()->sum('quantity'),2);
+        $total_incomes = number_format(auth()->user()->incomes->sum('quantity'),2);
+        $total_expenses = number_format(auth()->user()->expenses->sum('quantity'),2);
+        $total_loans = number_format(auth()->user()->loans->sum('quantity'),2);
+        $total_debts = number_format(auth()->user()->debts->sum('quantity'),2);
+        $total_investments = number_format(auth()->user()->investments->sum('quantity'),2);
         
         return Inertia::render('Dashboard',compact('total_incomes','total_expenses','total_loans','total_debts','total_investments'));
     })->name('dashboard');

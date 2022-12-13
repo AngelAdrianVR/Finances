@@ -50,12 +50,12 @@
         x
       </button>
 
-      <div class="flex flex-row space-x-10 px-4 pt-2 text-lg mb-2">
+      <div class="flex flex-row space-x-10 px-4 pt-2 text-sm mb-2">
         <span class="font-bold uppercase"> {{ income.concept }} </span>
         <span> ${{ income.quantity }} </span>
       </div>
       <div class="">
-        <p class="flex justify-end px-2 text-sm text-gray-400"> {{ income.created_at }} </p>
+        <p class="flex justify-end px-2 text-xs text-gray-400"> {{ income.created_at }} </p>
       </div>
     </div>
   <Pagination :pagination="incomes" />

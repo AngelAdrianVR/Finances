@@ -12,7 +12,7 @@ class DebtController extends Controller
     public function index(Request $request)
     {
         $filters = $request->all('search');
-        $debts = DebtResource::collection(Debt::filter($filters)
+        $debts = DebtResource::collection(auth()->user()->debts()->filter($filters)
                 ->latest()->paginate(30));
         return Inertia::render('Debt/Index',compact('debts','filters'));
     }
@@ -32,7 +32,7 @@ class DebtController extends Controller
             'pay_date' => 'after:today',
         ]);
 
-        Debt::create($validated);
+        Debt::create($validated + ['user_id'=>auth()->id()]);
 
         request()->session()->flash('flash.banner', 'Creada nuevo Registro de Deuda correctamente!');
         request()->session()->flash('flash.bannerStyle', 'success');
@@ -55,6 +55,7 @@ class DebtController extends Controller
        $debt->update([
          'payed_at'=>now(),
        ]);
+       
        request()->session()->flash('flash.banner', 'Se ha marcado como pagado');
        request()->session()->flash('flash.bannerStyle', 'success'); 
        return response()->json(['item'=>DebtResource::make($debt)]);

@@ -22,7 +22,6 @@
                     required
                     autofocus
                 />
-            <!-- <InputError class="mt-2" :message="form.quantity" /> -->
 
             <InputLabel class="dark:text-gray-300 mx-4 my-2 text-lg" value="Concepto" />
             <TextInput

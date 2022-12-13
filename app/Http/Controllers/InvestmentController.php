@@ -12,7 +12,7 @@ class InvestmentController extends Controller
     public function index(Request $request)
     {
         $filters = $request->all('search');
-        $investments = InvestmentResource::collection(Investment::filter($filters)
+        $investments = InvestmentResource::collection(auth()->user()->investments()->filter($filters)
         ->latest()->paginate(30));
         return Inertia::render('Investment/Index', compact('investments','filters'));
     }
@@ -33,7 +33,7 @@ class InvestmentController extends Controller
         ]);
 
 
-        Investment::create($validated);
+        Investment::create($validated + ['user_id'=>auth()->id()]);
 
         request()->session()->flash('flash.banner', 'Nuevo Registro de Inversión creado correctamente!');
         request()->session()->flash('flash.bannerStyle', 'success');

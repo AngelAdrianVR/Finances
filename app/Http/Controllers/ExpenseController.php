@@ -18,7 +18,7 @@ class ExpenseController extends Controller
     public function index(Request $request)
     {
         $filters = $request->all('search');
-        $expenses = ExpenseResource::collection(Expense::filter($filters)
+        $expenses = ExpenseResource::collection(auth()->user()->expenses()->filter($filters)
                     ->latest()->paginate(30));
        return Inertia::render('Expense/Index', compact('expenses','filters'));
     }
@@ -38,7 +38,7 @@ class ExpenseController extends Controller
             'category_id' => 'required',
         ]);
 
-       Expense::create($validated);
+       Expense::create($validated + ['user_id'=>auth()->id()]);
         
         request()->session()->flash('flash.banner', 'Se ha creado un nuevo Egreso correctamente!');
         request()->session()->flash('flash.bannerStyle', 'success');

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('reason');
             $table->date('pay_date')->nullable();
             $table->date('payed_at')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

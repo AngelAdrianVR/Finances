@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('platform');
             $table->date('release_date')->nullable();
             $table->date('released_at')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

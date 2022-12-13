@@ -24,7 +24,7 @@
         bg-stone-700
         border-2
         rounded-lg
-        h-52
+        h-auto
         mt-4
         w-[90%]
         relative
@@ -50,11 +50,11 @@
       >
         x
       </button>
-      <div class="flex flex-row space-x-5 px-4 py-3 text-lg">
+      <div class="flex flex-col space-x-5 px-4 py-3 text-lg">
         <span class="font-bold uppercase"> {{ investment.platform }} </span>
-        <span> {{ investment.type }} </span>
-        <span> ${{ investment.quantity }} </span>
-        <span> ${{ investment.profit }} </span>
+        <span>Tipo: {{ investment.type }} </span>
+        <span>Cantidad: ${{ investment.quantity }} </span>
+        <span>Profit: {{ investment.profit }} </span>
       </div>
       <div class="flex flex-col space-x-5 px-4 py-3 text-lg">
         <span> Fecha liberación: {{ investment.release_date }} </span>

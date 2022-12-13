@@ -24,7 +24,7 @@
         border-2
         border-gray-500
         rounded-lg
-        h-20
+        h-auto
         mt-4
         w-[90%]
 
@@ -50,7 +50,7 @@
         x
       </button>
 
-      <div class="flex flex-row space-x-10 px-4 py-3 text-lg mb-3">
+      <div class="flex flex-row space-x-10 px-4 pt-2 text-lg mb-2">
         <span class="font-bold uppercase"> {{ income.concept }} </span>
         <span> ${{ income.quantity }} </span>
       </div>

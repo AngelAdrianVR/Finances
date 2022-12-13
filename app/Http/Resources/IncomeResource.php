@@ -17,7 +17,7 @@ class IncomeResource extends JsonResource
         return [
             'id'=> $this->id,
             'created_at' => $this->created_at->isoFormat('DD MMM YYYY'),
-            'quantity' => $this->quantity,
+            'quantity' => number_format($this->quantity),
             'concept' => $this->concept,
         ];
     }

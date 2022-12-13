@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedMediumInteger('quantity');
             $table->string('concept');
-            $table->foreignId('category_id')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

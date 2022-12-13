@@ -1,6 +1,6 @@
 <template>
   <AppLayout title="Estadisticas-Ingresos">
-    <YearTable :color="0" />
+    <YearTable :color="0" :data="filtered_incomes"/>
 
     <Chart />
 
@@ -27,7 +27,9 @@ export default {
     Link,
     Chart,
   },
-  props: {},
+  props: {
+    filtered_incomes: Array,
+  },
   methods: {},
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <AppLayout title="Estadisticas-Egresos">
-        <YearTable :color="1"/>
+        <YearTable :color="1" :data="filtered_expenses"/>
   </AppLayout>
 </template>
 
@@ -27,7 +27,7 @@ export default {
 
   },
   props: {
-
+    filtered_expenses: Array,
   },
   methods: {
 

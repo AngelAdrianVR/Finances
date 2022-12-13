@@ -19,9 +19,8 @@ class IncomeController extends Controller
     {
         $filters = $request->all('search');
 
-        $incomes = IncomeResource::collection(Income::filter($filters)
+        $incomes = IncomeResource::collection(auth()->user()->incomes()->filter($filters)
                     ->latest()->paginate(30));
-        // return $incomes;
         return Inertia::render('Income/Index', compact('incomes','filters'));
     }
 
@@ -35,9 +34,9 @@ class IncomeController extends Controller
     {
        $validated = $request->validate([
             'quantity' => 'required|numeric|min:1',
-            'concept' => 'required|max:30',
+            'concept' => 'required|max:50',
         ]);
-       Income::create($validated);
+       Income::create($validated + ['user_id'=>auth()->id()]);
         
         request()->session()->flash('flash.banner', 'Se ha creado un nuevo ingreso correctamente!');
         request()->session()->flash('flash.bannerStyle', 'success');

@@ -12,7 +12,7 @@ class LoanController extends Controller
    public function index(Request  $request)
    {
       $filters = $request->all('search');
-      $loans = LoanResource::collection(Loan::filter($filters)
+      $loans = LoanResource::collection(auth()->user()->loans()->filter($filters)
                ->latest()->paginate(30));
     return Inertia::render('Loan/Index',compact('loans','filters'));
    }
@@ -30,7 +30,7 @@ class LoanController extends Controller
          'pay_date' => 'after:today',
       ]);
 
-         Loan::create($validated);
+         Loan::create($validated + ['user_id'=>auth()->id()]);
 
       request()->session()->flash('flash.banner', 'Se ha creado un nuevo Registro de Préstamo correctamente!');
       request()->session()->flash('flash.bannerStyle', 'success');

@@ -14,6 +14,7 @@ class Loan extends Model
         'debtor',
         'payed_at',
         'pay_date',
+        'user_id',
            
     ];
 
@@ -21,6 +22,12 @@ class Loan extends Model
         'payed_at',
         'pay_date',
     ];
+
+    //relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
      // query scopes
      public function scopeFilter($query, $filters)

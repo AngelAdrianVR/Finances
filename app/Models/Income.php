@@ -12,8 +12,16 @@ class Income extends Model
     protected $fillable = [
         'quantity',
         'concept',
+        'user_id',
     ];
 
+    //relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    
     // query scopes
     public function scopeFilter($query, $filters)
     {

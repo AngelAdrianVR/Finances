@@ -17,7 +17,7 @@ class LoanResource extends JsonResource
         return [
             'id'=> $this->id,
             'created_at' => $this->created_at->isoFormat('DD MMM YYYY'),
-            'quantity' => $this->quantity,
+            'quantity' => number_format($this->quantity),
             'debtor' => $this->debtor,
             'payed_at' => $this->payed_at,
             'pay_date' => $this->pay_date->isoFormat('DD MMM YYYY'),

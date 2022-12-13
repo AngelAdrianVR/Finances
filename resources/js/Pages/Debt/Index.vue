@@ -24,7 +24,7 @@
         bg-stone-700
         border-2
         rounded-lg
-        h-56
+        h-auto
         mt-4
         w-[90%]
         relative
@@ -50,9 +50,9 @@
       >
         x
       </button>
-      <div class="flex flex-row space-x-5 px-2 py-2 text-lg">
+      <div class="flex flex-col space-x-5 px-2 py-2 text-lg">
         <span class="font-extrabold uppercase"> {{ debt.lender }} </span>
-        <span> ${{ debt.quantity }} </span>
+        <span>Cantidad: ${{ debt.quantity }} </span>
         <span> Fecha promesa: {{ debt.pay_date }} </span>
       </div>
       <div class="flex flex-col space-x-5 px-4 py-3 text-lg">

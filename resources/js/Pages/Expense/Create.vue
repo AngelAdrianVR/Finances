@@ -54,6 +54,7 @@
               class="bg-stone-700 my-2 mr-2"
               name=""
               id="category"
+              required
               v-model="form.category_id"
             >
               <option disabled selected class="text-gray-500" value="">

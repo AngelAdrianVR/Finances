@@ -15,12 +15,20 @@ class Debt extends Model
         'reason',
         'pay_date',
         'payed_at',
+        'user_id',
+
     ];
 
     protected $dates = [
         'payed_at',
         'pay_date',
     ];
+
+    //relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     // query scopes
     public function scopeFilter($query, $filters)

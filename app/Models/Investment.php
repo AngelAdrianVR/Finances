@@ -16,11 +16,18 @@ class Investment extends Model
         'platform',
         'release_date',
         'released_at',
+        'user_id',
     ];
 
     protected $dates = [
         'release_date',
     ];
+
+    //relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     // query scopes
     public function scopeFilter($query, $filters)

@@ -24,7 +24,7 @@
         bg-stone-700
         border-2
         rounded-lg
-        h-44
+        h-auto
         mt-8
         w-[90%]
         relative

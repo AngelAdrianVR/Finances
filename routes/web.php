@@ -98,5 +98,5 @@ Route::get('/user/get-total',function(){
         $debts = auth()->user()->debts()->whereNotNull('payed_at')->get('quantity')->sum('quantity'); //restar 
         $investments = auth()->user()->investments()->whereNull('released_at')->get('quantity')->sum('quantity'); //restar
         $total = $incomes - $expenses - $loans - $debts - $investments;
-        return response()->json(['total' => $total]);
+        return response()->json(['total' => $total, 'invests' => $investments]);
 })->name('total');

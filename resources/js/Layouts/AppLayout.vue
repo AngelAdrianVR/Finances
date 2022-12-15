@@ -197,20 +197,23 @@ onMounted(() => {
 
                         <!-- Hamburger -->
                         <div class="flex items-center sm:hidden mr-auto space-x-2">
-                            <img src="@/images/xphere_Iso_logo.png" alt="Logotipo_xphere" class="w-[10%]">
-                            <p class="font-thin">Finances.Xphere</p>
+                        <img src="@/images/xphere_Iso_logo.png" alt="Logotipo_xphere" class="w-[10%]" >
+                        <p class="font-thin">Mis Finanzas</p>
                         </div>
                         <div class="-mr-2 flex items-center sm:hidden">
-                            <span class="flex items-center mr-2 text-xs">
-                                <i class="fa-solid fa-wallet text-xs text-gray-300 mr-1"></i>
-                                ${{ total }}
-                            </span>
-                            <button
-                                class="inline-flex items-center justify-center p-2 rounded-md text-gray-200 hover:text-stone-700 hover:bg-stone-500 focus:outline-none focus:bg-gray-700 focus:text-gray-700 transition"
-                                @click="showingNavigationDropdown = !showingNavigationDropdown">
-                                <svg class="h-6 w-6 text-stone-400" stroke="currentColor" fill="none"
-                                    viewBox="0 0 24 24">
+                            <span class="flex items-center mr-3 text-xs"><i class="fa-solid fa-piggy-bank text-sm text-gray-300 mr-1"></i> ${{invests}} </span>
+                            <span class="flex items-center text-xs"><i class="fa-solid fa-wallet text-sm text-gray-300 mr-1"></i> ${{total}} </span>
+                            <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-200 hover:text-stone-700 hover:bg-stone-500 focus:outline-none focus:bg-gray-700 focus:text-gray-700 transition" @click="showingNavigationDropdown = ! showingNavigationDropdown">
+                                <svg
+                                    class="h-6 w-6 text-stone-400"
+                                    stroke="currentColor"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                >
                                     <path
+                                        :class="{ 'hidden': showingNavigationDropdown, 'inline-flex': !showingNavigationDropdown }"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16M4 18h16" />
                                         :class="{ 'hidden': showingNavigationDropdown, 'inline-flex': !showingNavigationDropdown }"
                                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 6h16M4 12h16M4 18h16" />
@@ -272,7 +275,7 @@ onMounted(() => {
 
                         <div class="mt-3 space-y-1">
                             <ResponsiveNavLink :href="route('profile.show')" :active="route().current('profile.show')">
-                                Profile
+                                Perfil
                             </ResponsiveNavLink>
 
                             <ResponsiveNavLink v-if="$page.props.jetstream.hasApiFeatures"
@@ -283,7 +286,7 @@ onMounted(() => {
                             <!-- Authentication -->
                             <form method="POST" @submit.prevent="logout">
                                 <ResponsiveNavLink as="button">
-                                    Log Out
+                                    Cerras Sesión
                                 </ResponsiveNavLink>
                             </form>
 
@@ -335,9 +338,9 @@ onMounted(() => {
             </nav>
 
             <!-- Page Heading -->
-            <header v-if="$slots.header" class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header" />
+            <header v-if="$slots.header" class="bg-stone-700 shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 ">
+                    <slot name="header" class="text-white"/>
                 </div>
             </header>
 

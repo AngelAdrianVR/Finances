@@ -190,9 +190,10 @@ const getTotal = () => {
                         <!-- Hamburger -->
                         <div class="flex items-center sm:hidden mr-auto space-x-2">
                         <img src="@/images/xphere_Iso_logo.png" alt="Logotipo_xphere" class="w-[10%]" >
-                        <p class="font-thin">Finances.Xphere</p>
+                        <p class="font-thin">Mis Finanzas</p>
                         </div>
                         <div class="-mr-2 flex items-center sm:hidden">
+                            <span class="flex items-center mr-2"><i class="fa-solid fa-piggy-bank text-sm text-gray-300 mr-2"></i> {{invests}} </span>
                             <span class="flex items-center mr-2"><i class="fa-solid fa-wallet text-sm text-gray-300 mr-2"></i> {{total}} </span>
                             <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-200 hover:text-stone-700 hover:bg-stone-500 focus:outline-none focus:bg-gray-700 focus:text-gray-700 transition" @click="showingNavigationDropdown = ! showingNavigationDropdown">
                                 <svg
@@ -266,7 +267,7 @@ const getTotal = () => {
 
                         <div class="mt-3 space-y-1">
                             <ResponsiveNavLink :href="route('profile.show')" :active="route().current('profile.show')">
-                                Profile
+                                Perfil
                             </ResponsiveNavLink>
 
                             <ResponsiveNavLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')" :active="route().current('api-tokens.index')">
@@ -276,7 +277,7 @@ const getTotal = () => {
                             <!-- Authentication -->
                             <form method="POST" @submit.prevent="logout">
                                 <ResponsiveNavLink as="button">
-                                    Log Out
+                                    Cerras Sesión
                                 </ResponsiveNavLink>
                             </form>
 
@@ -330,9 +331,9 @@ const getTotal = () => {
             </nav>
 
             <!-- Page Heading -->
-            <header v-if="$slots.header" class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header" />
+            <header v-if="$slots.header" class="bg-stone-700 shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 ">
+                    <slot name="header" class="text-white"/>
                 </div>
             </header>
 

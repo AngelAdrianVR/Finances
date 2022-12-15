@@ -50,12 +50,12 @@
       >
         x
       </button>
-      <div class="flex flex-col space-x-5 px-2 py-2 text-lg">
+      <div class="flex flex-col space-x-5 px-2 py-2 text-sm">
         <span class="font-extrabold uppercase"> {{ debt.lender }} </span>
         <span>Cantidad: ${{ debt.quantity }} </span>
         <span> Fecha promesa: {{ debt.pay_date }} </span>
       </div>
-      <div class="flex flex-col space-x-5 px-4 py-3 text-lg">
+      <div class="flex flex-col space-x-5 px-4 py-3 text-sm">
         <span> {{ debt.reason }} </span>
         <span v-if="debt.payed_at"> Pagado el: {{ debt.payed_at }} </span>
       </div>
@@ -79,6 +79,8 @@
         <p class="flex justify-end px-2 text-sm text-gray-400"> {{ debt.created_at }} </p>
       </div>
     </div>
+    
+    <p v-if="!debts.data.length" class="text-sm text-gray-200 text-center py-6">No hay elementos para mostrar</p>
     <Pagination :pagination="debts"/>
 
   <ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
@@ -106,13 +108,13 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import PrimaryButton from "@/components/PrimaryButton.vue";
-import SecondaryButton from "@/components/SecondaryButton.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from '@inertiajs/inertia';
-import Pagination from "@/components/Pagination.vue";
-import ConfirmationModal from "@/components/ConfirmationModal.vue";
-import SearchInput from "@/components/SearchInput.vue";
+import Pagination from "@/Components/Pagination.vue";
+import ConfirmationModal from "@/Components/ConfirmationModal.vue";
+import SearchInput from "@/Components/SearchInput.vue";
 
 export default {
   data() {

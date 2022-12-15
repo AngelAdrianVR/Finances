@@ -13,13 +13,14 @@ class LoanController extends Controller
    {
       $filters = $request->all('search');
       $loans = LoanResource::collection(auth()->user()->loans()->filter($filters)
-               ->latest()->paginate(30));
-    return Inertia::render('Loan/Index',compact('loans','filters'));
+         ->latest()->paginate(30));
+
+      return Inertia::render('Loan/Index', compact('loans', 'filters'));
    }
 
    public function create()
    {
-    return Inertia::render('Loan/Create');
+      return Inertia::render('Loan/Create');
    }
 
    public function store(Request $request)
@@ -30,31 +31,29 @@ class LoanController extends Controller
          'pay_date' => 'after:today',
       ]);
 
-         Loan::create($validated + ['user_id'=>auth()->id()]);
+      Loan::create($validated + ['user_id' => auth()->id()]);
 
       request()->session()->flash('flash.banner', 'Se ha creado un nuevo Registro de Préstamo correctamente!');
       request()->session()->flash('flash.bannerStyle', 'success');
 
-        return redirect()->route('loans.index');
+      return redirect()->route('loans.index');
    }
 
    public function destroy(Loan $loan)
    {
-       $loan->delete();
-       request()->session()->flash('flash.banner', 'Se ha eliminado correctamente!');
-       request()->session()->flash('flash.bannerStyle', 'success'); 
-       return redirect()->route('loans.index');
-
+      $loan->delete();
+      request()->session()->flash('flash.banner', 'Se ha eliminado correctamente!');
+      request()->session()->flash('flash.bannerStyle', 'success');
+      return redirect()->route('loans.index');
    }
 
    public function markAsPayed(Loan $loan)
    {
-       $loan->update([
-         'payed_at'=>now(),
-       ]);
-       request()->session()->flash('flash.banner', 'Se ha marcado como pagado');
-       request()->session()->flash('flash.bannerStyle', 'success'); 
-       return response()->json(['item'=>LoanResource::make($loan)]);
-
+      $loan->update([
+         'payed_at' => now(),
+      ]);
+      request()->session()->flash('flash.banner', 'Se ha marcado como pagado');
+      request()->session()->flash('flash.bannerStyle', 'success');
+      return response()->json(['item' => LoanResource::make($loan)]);
    }
 }

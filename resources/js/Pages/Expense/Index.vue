@@ -48,7 +48,7 @@
         x
       </button>
 
-      <div class="flex flex-col space-x-5 px-4 py-3 text-lg">
+      <div class="flex flex-col space-x-5 px-4 py-3 text-sm">
         <span class="font-bold uppercase"> {{ expense.concept }} </span>
         <span>Cantidad: ${{ expense.quantity }} </span>
         <span>Categoría: {{ expense.category }} </span>
@@ -57,6 +57,7 @@
         <p class="flex justify-end px-2 text-sm text-gray-400"> {{ expense.created_at }} </p>
       </div>
     </div>
+    <p v-if="!expenses.data.length" class="text-sm text-gray-200 text-center py-6">No hay elementos para mostrar</p>
     <Pagination :pagination="expenses" />
 
   <ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
@@ -84,12 +85,12 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import PrimaryButton from "@/components/PrimaryButton.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from '@inertiajs/inertia';
-import Pagination from "@/components/Pagination.vue";
-import ConfirmationModal from "@/components/ConfirmationModal.vue";
-import SearchInput from "@/components/SearchInput.vue";
+import Pagination from "@/Components/Pagination.vue";
+import ConfirmationModal from "@/Components/ConfirmationModal.vue";
+import SearchInput from "@/Components/SearchInput.vue";
 
 export default {
   data() {

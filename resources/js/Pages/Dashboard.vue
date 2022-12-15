@@ -27,11 +27,11 @@ export default {
         Welcome,
     },
     props:{
-        total_incomes: Number,
-        total_expenses: Number,
-        total_loans: Number,
-        total_debts: Number,
-        total_investments: Number,
+        total_incomes: String,
+        total_expenses: String,
+        total_loans: String,
+        total_debts: String,
+        total_investments: String,
     },
 }
 </script>

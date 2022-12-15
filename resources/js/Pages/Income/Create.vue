@@ -22,7 +22,7 @@
                     required
                     autofocus
                 />
-
+                <InputError :message="$page.props?.errors.quantity" />
             <InputLabel class="dark:text-gray-300 mx-4 my-2 text-lg" value="Concepto" />
             <TextInput
                     id="concept"
@@ -30,8 +30,8 @@
                     type="text"
                     class="mt-1 block w-full"
                     required
-                    autofocus
                 />
+                <InputError :message="$page.props?.errors.concept" />
                 <PrimaryButton :disabled="form.processing" class="my-4 bg-stone-800">Agregar</PrimaryButton>
         </div>
      </div>
@@ -42,7 +42,7 @@
 
 <script>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import PrimaryButton from '@/components/PrimaryButton.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Link, useForm } from '@inertiajs/inertia-vue3';

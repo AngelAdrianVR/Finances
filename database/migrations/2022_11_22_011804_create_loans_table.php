@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedSmallInteger('quantity');
+            $table->unsignedMediumInteger('quantity');
             $table->string('debtor');
             $table->date('pay_date')->nullable();
             $table->date('payed_at')->nullable();

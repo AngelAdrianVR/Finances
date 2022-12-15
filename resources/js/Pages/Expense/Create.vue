@@ -38,6 +38,7 @@
               required
               autofocus
             />
+            <InputError :message="$page.props?.errors.quantity" />
             <InputLabel
               class="dark:text-gray-300 mx-4 my-2 text-lg"
               value="Concepto"
@@ -48,12 +49,10 @@
               type="text"
               class="mt-1 block w-full"
               required
-              autofocus
             />
+            <InputError :message="$page.props?.errors.concept" />
             <select
               class="bg-stone-700 my-2 mr-2"
-              name=""
-              id="category"
               required
               v-model="form.category_id"
             >
@@ -78,7 +77,7 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import PrimaryButton from "@/components/PrimaryButton.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Link, useForm } from "@inertiajs/inertia-vue3";

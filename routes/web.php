@@ -11,7 +11,9 @@ use App\Models\Expense;
 use App\Models\Income;
 use App\Models\Investment;
 use App\Models\Loan;
+use App\Models\User;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -44,9 +46,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         $total_incomes = number_format(auth()->user()->incomes->sum('quantity'),2);
         $total_expenses = number_format(auth()->user()->expenses->sum('quantity'),2);
-        $total_loans = number_format(auth()->user()->loans->sum('quantity'),2);
-        $total_debts = number_format(auth()->user()->debts->sum('quantity'),2);
-        $total_investments = number_format(auth()->user()->investments->sum('quantity'),2);
+        $total_loans = number_format(auth()->user()->loans()->WhereNull('payed_at')->get('quantity')->sum('quantity'),2);
+        $total_debts = number_format(auth()->user()->debts()->WhereNull('payed_at')->get('quantity')->sum('quantity'),2);
+        $total_investments = number_format(auth()->user()->investments()->WhereNull('released_at')->get('quantity')->sum('quantity'),2);
         
         return Inertia::render('Dashboard',compact('total_incomes','total_expenses','total_loans','total_debts','total_investments'));
     })->name('dashboard');
@@ -89,3 +91,12 @@ Route::post('/investments/store',[InvestmentController::class, 'store'])->name('
 Route::delete('/investments/{investment}',[InvestmentController::class, 'destroy'])->name('investments.destroy');
 Route::put('/investments/{investment}/payed',[InvestmentController::class, 'markAsPayed'])->name('investments.mark-as-payed');
 
+Route::get('/user/get-total',function(){
+        $incomes = auth()->user()->incomes->sum('quantity');
+        $expenses = auth()->user()->expenses->sum('quantity');
+        $loans = auth()->user()->loans()->whereNull('payed_at')->get('quantity')->sum('quantity'); //restar
+        $debts = auth()->user()->debts()->whereNotNull('payed_at')->get('quantity')->sum('quantity'); //restar 
+        $investments = auth()->user()->investments()->whereNull('released_at')->get('quantity')->sum('quantity'); //restar
+        $total = $incomes - $expenses - $loans - $debts - $investments;
+        return response()->json(['total' => $total]);
+})->name('total');

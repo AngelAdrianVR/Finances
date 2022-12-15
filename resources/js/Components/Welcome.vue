@@ -301,6 +301,52 @@
             </div>
           </div>
         </Link>
+
+        <!-- <Link :href="route('investments.index')" class="w-full">
+          <div
+            class="
+              flex flex-wrap flex-row
+              sm:flex-col
+              justify-center
+              items-center
+              w-full
+              sm:w-1/4
+              p-5
+              bg-gray-700
+              rounded-md
+              shadow-xl
+              border-l-4 border-cyan-300
+            "
+          >
+            <div class="flex justify-between w-full">
+              <div>
+                <div class="p-2">
+                  <i class="a-solid fa-wallet text-lg text-gray-400"></i>
+                </div>
+              </div>
+              <div>
+                <div
+                  style="padding-top: 0.1em; padding-bottom: 0.1rem"
+                  class="
+                    flex
+                    items-center
+                    text-xs
+                    px-3
+                    bg-cyan-300
+                    text-cyan-800
+                    rounded-full
+                  "
+                >
+                  ${{ data[4] }}
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col justify-center items-center">
+              <i class="fa-solid fa-wallet text-5xl text-gray-200"></i>
+              <span class="font-semibold">Billetera</span>
+            </div>
+          </div>
+        </Link> -->
       </div>
     </div>
   </div>

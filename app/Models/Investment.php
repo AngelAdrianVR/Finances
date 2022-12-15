@@ -21,6 +21,7 @@ class Investment extends Model
 
     protected $dates = [
         'release_date',
+        'released_at',
     ];
 
     //relationships

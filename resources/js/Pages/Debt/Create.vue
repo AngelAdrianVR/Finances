@@ -38,9 +38,10 @@
               required
               autofocus
             />
+            <InputError :message="$page.props?.errors.quantity" />
             <InputLabel
               class="dark:text-gray-300 mx-4 my-1 text-lg"
-              value="Rason"
+              value="Razón"
             />
             <TextInput
               id="reason"
@@ -48,8 +49,8 @@
               type="text"
               class="mt-1 block w-full"
               required
-              autofocus
             />
+            <InputError :message="$page.props?.errors.reason" />
 
             <InputLabel
               class="dark:text-gray-300 mx-4 my-1 text-lg"
@@ -61,8 +62,8 @@
               type="text"
               class="mt-1 block w-full"
               required
-              autofocus
             />
+            <InputError :message="$page.props?.errors.lender" />
 
             <InputLabel
               class="dark:text-gray-300 mx-4 my-1 text-lg"
@@ -74,8 +75,8 @@
               type="date"
               class="mt-1 block w-full"
               required
-              autofocus
             />
+            <InputError :message="$page.props?.errors.pay_date" />
             <PrimaryButton :disabled="form.processing" class="my-4 bg-stone-800">Agregar</PrimaryButton>
 
           </div>
@@ -87,9 +88,10 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import PrimaryButton from "@/components/PrimaryButton.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
+import InputError from "@/Components/InputError.vue";
 import { Link, useForm } from "@inertiajs/inertia-vue3";
 
 export default {
@@ -109,6 +111,7 @@ export default {
     PrimaryButton,
     InputLabel,
     TextInput,
+    InputError,
     Link,
     useForm,
   },

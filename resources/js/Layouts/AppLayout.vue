@@ -13,6 +13,8 @@ defineProps({
     title: String,
 });
 
+let total = 0;
+
 const showingNavigationDropdown = ref(false);
 
 const switchToTeam = (team) => {
@@ -26,6 +28,17 @@ const switchToTeam = (team) => {
 const logout = () => {
     Inertia.post(route('logout'));
 };
+
+const getTotal = () => {
+    axios
+        .post(route("total"))
+        .then((response) => {
+          total = response.total;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+}
 </script>
 
 <template>
@@ -180,6 +193,7 @@ const logout = () => {
                         <p class="font-thin">Finances.Xphere</p>
                         </div>
                         <div class="-mr-2 flex items-center sm:hidden">
+                            <span class="flex items-center mr-2"><i class="fa-solid fa-wallet text-sm text-gray-300 mr-2"></i> {{total}} </span>
                             <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-200 hover:text-stone-700 hover:bg-stone-500 focus:outline-none focus:bg-gray-700 focus:text-gray-700 transition" @click="showingNavigationDropdown = ! showingNavigationDropdown">
                                 <svg
                                     class="h-6 w-6 text-stone-400"

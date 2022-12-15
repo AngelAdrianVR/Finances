@@ -20,7 +20,7 @@ class DebtResource extends JsonResource
             'quantity' => number_format($this->quantity),
             'lender' => $this->lender,
             'reason' => $this->reason,
-            'payed_at' => $this->payed_at,
+            'payed_at' => $this->payed_at?->isoFormat('DD MMM YYYY'),
             'pay_date' => $this->pay_date->isoFormat('DD MMM YYYY'),
         ];
     }

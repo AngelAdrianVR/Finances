@@ -58,6 +58,7 @@
         <p class="flex justify-end px-2 text-xs text-gray-400"> {{ income.created_at }} </p>
       </div>
     </div>
+    <p v-if="!incomes.data.length" class="text-sm text-gray-200 text-center py-6">No hay elementos para mostrar</p>
   <Pagination :pagination="incomes" />
 
 <ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
@@ -85,10 +86,10 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import PrimaryButton from "@/components/PrimaryButton.vue";
-import Pagination from "@/components/Pagination.vue";
-import SearchInput from "@/components/SearchInput.vue";
-import ConfirmationModal from "@/components/ConfirmationModal.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import Pagination from "@/Components/Pagination.vue";
+import SearchInput from "@/Components/SearchInput.vue";
+import ConfirmationModal from "@/Components/ConfirmationModal.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from '@inertiajs/inertia';
 

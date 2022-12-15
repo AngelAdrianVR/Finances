@@ -44,8 +44,8 @@ Route::middleware([
 ])->group(function () {
     
     Route::get('/dashboard', function () {
-        $total_incomes = number_format(auth()->user()->incomes->sum('quantity'),2);
-        $total_expenses = number_format(auth()->user()->expenses->sum('quantity'),2);
+        $total_incomes = number_format(auth()->user()->incomes()->whereMonth('created_at', now()->month )->sum('quantity'),2);
+        $total_expenses = number_format(auth()->user()->expenses()->whereMonth('created_at', now()->month )->sum('quantity'),2);
         $total_loans = number_format(auth()->user()->loans()->WhereNull('payed_at')->get('quantity')->sum('quantity'),2);
         $total_debts = number_format(auth()->user()->debts()->WhereNull('payed_at')->get('quantity')->sum('quantity'),2);
         $total_investments = number_format(auth()->user()->investments()->WhereNull('released_at')->get('quantity')->sum('quantity'),2);

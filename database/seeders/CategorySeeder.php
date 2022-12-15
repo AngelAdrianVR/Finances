@@ -26,16 +26,16 @@ class CategorySeeder extends Seeder
                 'name' => 'Servicios',
             ],
             [
-                'name' => 'Deuda',
-            ],
-            [
-                'name' => 'Préstamo',
-            ],
-            [
                 'name' => 'Caridad',
             ],
             [
-                'name' => 'Básico',
+                'name' => 'Diversión',
+            ],
+            [
+                'name' => 'Vestimenta',
+            ],
+            [
+                'name' => 'Hormiga',
             ],
             [
                 'name' => 'Lujo',

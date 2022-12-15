@@ -40,7 +40,7 @@ const updatePassword = () => {
 <template>
     <FormSection @submitted="updatePassword">
         <template #title>
-            Update Password
+           <span class="text-gray-300">Update Password</span> 
         </template>
 
         <template #description>

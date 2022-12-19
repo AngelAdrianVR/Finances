@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DebtResource;
+use App\Http\Resources\ExpenseResource;
+use App\Http\Resources\IncomeResource;
+use App\Http\Resources\InvestmentResource;
+use App\Http\Resources\LoanResource;
 use App\Models\Debt;
 use App\Models\Expense;
 use App\Models\Income;
@@ -99,10 +104,33 @@ class StatisticController extends Controller
         return Inertia::render('Statistics/Investments', compact('filtered_investments'));
     }
 
-    public function monthResume()
+    public function incomesResume($month)
     {
-       $incomes = auth()->user()->incomes;
-       return $incomes;
-        return Inertia::render('Statistics/MonthResume',compact('incomes'));
+       $incomes = IncomeResource::collection(auth()->user()->incomes()->whereMonth('created_at', $month)->whereYear('created_at', now()->year)->get());
+        return Inertia::render('Statistics/IncomesResume',compact('incomes'));
+    }
+
+    public function expensesResume($month)
+    {
+       $expenses = ExpenseResource::collection(auth()->user()->expenses()->whereMonth('created_at', $month)->whereYear('created_at', now()->year)->get());
+        return Inertia::render('Statistics/ExpensesResume',compact('expenses'));
+    }
+
+    public function loansResume($month)
+    {
+       $loans = LoanResource::collection(auth()->user()->loans()->whereMonth('created_at', $month)->whereYear('created_at', now()->year)->get());
+        return Inertia::render('Statistics/LoansResume',compact('loans'));
+    }
+
+    public function debtsResume($month)
+    {
+       $debts = DebtResource::collection(auth()->user()->debts()->whereMonth('created_at', $month)->whereYear('created_at', now()->year)->get());
+        return Inertia::render('Statistics/DebtsResume',compact('debts'));
+    }
+
+    public function investmentsResume($month)
+    {
+       $investments = InvestmentResource::collection(auth()->user()->investments()->whereMonth('created_at', $month)->whereYear('created_at', now()->year)->get());
+        return Inertia::render('Statistics/InvestmentsResume',compact('investments'));
     }
 }

@@ -8,6 +8,7 @@
             <tr>
               <th :class="type[color]" class="py-4 px-6 font-bold uppercase text-sm border-b-2">Mes</th>
               <th :class="type[color]" class="py-4 px-6 text-center  font-bold uppercase text-sm  border-b-2">Total</th>
+              <th :class="type[color]" class="py-4 px-6 text-center  font-bold uppercase text-sm  border-b-2"></th>
             </tr>
           </thead>
           <tbody>
@@ -15,6 +16,9 @@
               <td class="py-4 px-6 border-b border-grey-light">{{ month }}</td>
               <td class="py-4 px-6 text-center border-b border-grey-light">
                 {{data[index]}}
+              </td>
+              <td class="py-4 px-6 text-center border-b border-grey-light">
+                <Link :href="route('statistics.resume')"><PrimaryButton class="!bg-indigo-500">Ver</PrimaryButton></Link>
               </td>
             </tr>
           </tbody>
@@ -26,6 +30,9 @@
 </template>
 
 <script>
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import { Link } from "@inertiajs/inertia-vue3";
+
 export default {
     data(){
         return{
@@ -56,6 +63,10 @@ export default {
       color: Number,
       data: Array,
 
+    },
+    components:{
+      PrimaryButton,
+      Link,
     },
     methods:{
 

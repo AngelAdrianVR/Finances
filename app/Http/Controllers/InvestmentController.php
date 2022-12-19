@@ -26,9 +26,9 @@ class InvestmentController extends Controller
     {
         $validated = $request->validate([
             'quantity' => 'required|numeric|min:1',
-            'platform' => 'required|max:30',
-            'type' => 'max:30',
-            'profit' => 'max:30',
+            'platform' => 'required|max:50',
+            'type' => 'max:50',
+            'profit' => 'max:50',
             'release_date' => 'after:today',
         ]);
 

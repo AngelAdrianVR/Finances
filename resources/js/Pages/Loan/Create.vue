@@ -5,7 +5,7 @@
             <i class="fas fa-long-arrow-alt-left text-lg"></i>
             <span class="ml-2">Atrás</span>
         </Link>
-        <header class="block text-3xl text-gray-100 bg-stone-900 mt-5">Crear Registro de Prestamo</header>
+        <header class="block text-xl text-gray-100 bg-stone-900 mt-5">Crear Registro de Prestamo</header>
     </div>
        <div class="container mx-auto bg-stone-700 rounded-lg h-90 mt-8 w-[90%]">
 
@@ -27,6 +27,14 @@
             <TextInput
                     id="debtor"
                     v-model="form.debtor"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                />
+
+            <InputLabel class="dark:text-gray-300 mx-4 my-2 text-lg" value="Razón" />
+            <TextInput
+                    v-model="form.reason"
                     type="text"
                     class="mt-1 block w-full"
                     required
@@ -62,6 +70,7 @@ export default {
         const form = useForm({
         quantity: null,
         debtor: "",
+        reason: "",
         pay_date: "",
       
       })

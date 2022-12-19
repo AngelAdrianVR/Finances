@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedMediumInteger('quantity');
             $table->string('debtor');
+            $table->text('reason')->nullable();
             $table->date('pay_date')->nullable();
             $table->date('payed_at')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

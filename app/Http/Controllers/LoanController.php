@@ -28,6 +28,7 @@ class LoanController extends Controller
       $validated = $request->validate([
          'quantity' => 'required|numeric|min:1',
          'debtor' => 'required|max:30',
+         'reason' => 'required|max:100',
          'pay_date' => 'after:today',
       ]);
 

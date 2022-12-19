@@ -98,4 +98,11 @@ class StatisticController extends Controller
 
         return Inertia::render('Statistics/Investments', compact('filtered_investments'));
     }
+
+    public function monthResume()
+    {
+       $incomes = auth()->user()->incomes;
+       return $incomes;
+        return Inertia::render('Statistics/MonthResume',compact('incomes'));
+    }
 }

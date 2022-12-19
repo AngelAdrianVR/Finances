@@ -28,7 +28,7 @@ class DebtController extends Controller
         $validated = $request->validate([
             'quantity' => 'required|numeric|min:1',
             'lender' => 'required|max:30',
-            'reason' => 'max:50',
+            'reason' => 'max:100',
             'pay_date' => 'after:today',
         ]);
 

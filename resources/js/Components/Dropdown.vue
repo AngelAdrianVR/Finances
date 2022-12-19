@@ -30,12 +30,14 @@ onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 const widthClass = computed(() => {
     return {
         '48': 'w-48',
+        '24': 'w-24',
+        '52': 'w-52',
     }[props.width.toString()];
 });
 
 const alignmentClasses = computed(() => {
     if (props.align === 'left') {
-        return 'origin-top-left left-0';
+        return 'origin-top-left -left-5';
     }
 
     if (props.align === 'right') {
@@ -70,7 +72,7 @@ const alignmentClasses = computed(() => {
                 style="display: none;"
                 @click="open = false"
             >
-                <div class="rounded-md ring-1 ring-black ring-opacity-5 bg-stone-700" :class="contentClasses">
+                <div class="rounded-md ring-1 ring-black ring-opacity-5 bg-stone-700 p-3 text-sm border border-indigo-600 divide-y divide-stone-400 space-y-1 overflow-y-auto h-48" :class="contentClasses">
                     <slot name="content" />
                 </div>
             </div>

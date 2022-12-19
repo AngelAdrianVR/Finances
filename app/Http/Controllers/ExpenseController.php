@@ -34,7 +34,7 @@ class ExpenseController extends Controller
         // return $request;
         $validated = $request->validate([
             'quantity' => 'required|numeric|min:1',
-            'concept' => 'required|max:30',
+            'concept' => 'required|max:70',
             'category_id' => 'required',
         ]);
 

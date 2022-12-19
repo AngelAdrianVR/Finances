@@ -60,6 +60,7 @@ Route::get('/statistics/expenses', [StatisticController::class, 'expenses'])->na
 Route::get('/statistics/loans', [StatisticController::class, 'loans'])->name('statistics.loans');
 Route::get('/statistics/debts', [StatisticController::class, 'debts'])->name('statistics.debts');
 Route::get('/statistics/investments', [StatisticController::class, 'investments'])->name('statistics.investments');
+Route::get('/statistics/resume', [StatisticController::class, 'monthResume'])->name('statistics.resume');
 
 
 Route::get('/incomes', [IncomeController::class, 'index'])->name('incomes.index');
@@ -70,6 +71,7 @@ Route::delete('/incomes/{income}', [IncomeController::class, 'destroy'])->name('
 
 Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses.index');
 Route::get('/expenses/create', [ExpenseController::class, 'create'])->name('expenses.create');
+// Route::get('/expenses/fixed', [ExpenseController::class, 'fixed'])->name('expenses.fixed');
 Route::post('/expenses/store', [ExpenseController::class, 'store'])->name('expenses.store');
 Route::delete('/expenses/{expense}', [ExpenseController::class, 'destroy'])->name('expenses.destroy');
 
@@ -98,5 +100,5 @@ Route::get('/user/get-total',function(){
         $debts = auth()->user()->debts()->whereNotNull('payed_at')->get('quantity')->sum('quantity'); //restar 
         $investments = auth()->user()->investments()->whereNull('released_at')->get('quantity')->sum('quantity'); //restar
         $total = $incomes - $expenses - $loans - $debts - $investments;
-        return response()->json(['total' => $total, 'invests' => $investments]);
+        return response()->json(['total' => number_format($total), 'invests' => number_format($investments)]);
 })->name('total');

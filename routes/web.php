@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DebtController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\FixedController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\LoanController;
@@ -60,7 +61,11 @@ Route::get('/statistics/expenses', [StatisticController::class, 'expenses'])->na
 Route::get('/statistics/loans', [StatisticController::class, 'loans'])->name('statistics.loans');
 Route::get('/statistics/debts', [StatisticController::class, 'debts'])->name('statistics.debts');
 Route::get('/statistics/investments', [StatisticController::class, 'investments'])->name('statistics.investments');
-Route::get('/statistics/resume', [StatisticController::class, 'monthResume'])->name('statistics.resume');
+Route::get('/statistics/income-resume/{month}', [StatisticController::class, 'incomesResume'])->name('statistics.incomes-resume');
+Route::get('/statistics/expense-resume/{month}', [StatisticController::class, 'expensesResume'])->name('statistics.expenses-resume');
+Route::get('/statistics/loan-resume/{month}', [StatisticController::class, 'loansResume'])->name('statistics.loans-resume');
+Route::get('/statistics/debt-resume/{month}', [StatisticController::class, 'debtsResume'])->name('statistics.debts-resume');
+Route::get('/statistics/investment-resume/{month}', [StatisticController::class, 'investmentsResume'])->name('statistics.investments-resume');
 
 
 Route::get('/incomes', [IncomeController::class, 'index'])->name('incomes.index');
@@ -71,9 +76,10 @@ Route::delete('/incomes/{income}', [IncomeController::class, 'destroy'])->name('
 
 Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses.index');
 Route::get('/expenses/create', [ExpenseController::class, 'create'])->name('expenses.create');
-// Route::get('/expenses/fixed', [ExpenseController::class, 'fixed'])->name('expenses.fixed');
 Route::post('/expenses/store', [ExpenseController::class, 'store'])->name('expenses.store');
 Route::delete('/expenses/{expense}', [ExpenseController::class, 'destroy'])->name('expenses.destroy');
+
+Route::get('/fixed', [FixedController::class, 'index'])->name('fixed.index');
 
 Route::get('/loans',[LoanController::class, 'index'])->name('loans.index');
 Route::get('/loans/create',[LoanController::class, 'create'])->name('loans.create');

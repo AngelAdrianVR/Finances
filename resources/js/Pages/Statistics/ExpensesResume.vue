@@ -2,7 +2,7 @@
   <AppLayout title="Resumen Mendual">
     <div class="flex justify-between">
       <header class="block text-3xl text-gray-100 bg-stone-900 mt-5 ml-4">
-        Resumen Mensual
+        Resumen de Gastos Mensual
       </header>
     </div>
     <!-- <SearchInput 
@@ -11,8 +11,8 @@
        /> -->
        
     <div
-      v-for="(income, index) in incomes.data"
-      :key="income.id"
+      v-for="(expense) in expenses"
+      :key="expense.id"
       class="
         flex flex-col
         container
@@ -25,10 +25,9 @@
         w-[90%]
         relative
       "
-      :class="debt.payed_at ? 'border-green-600' : 'border-red-600'"
     >
       <button
-        @click="delete_confirm = true; item_to_delete = debt;"
+        @click="delete_confirm = true; item_to_delete = expense;"
         class="
           text-red-500 text-lg
           font-bold
@@ -47,37 +46,17 @@
         x
       </button>
       <div class="flex flex-col space-x-5 px-2 py-2 text-sm">
-        <span class="font-extrabold uppercase"> {{ debt.lender }} </span>
-        <span>Cantidad: ${{ debt.quantity }} </span>
-        <span> Fecha promesa: {{ debt.pay_date }} </span>
+        <span class="font-bold uppercase"> {{ expense.concept }} </span>
+        <span>Cantidad: ${{ expense.quantity }} </span>
+        <span>Categoría: {{ expense.category }} </span>
       </div>
-      <div class="flex flex-col space-x-5 px-4 py-3 text-sm">
-        <span> {{ debt.reason }} </span>
-        <span v-if="debt.payed_at"> Pagado el: {{ debt.payed_at }} </span>
-      </div>
-      <SecondaryButton
-      @click="payDebt(debt.id, index)"
-      v-if="!debt.payed_at"
-        class="
-          flex
-          justify-center
-          bg-green-700
-          mx-20
-          text-center text-white
-          font-bold
-          mt-2
-          mb-5
-        "
-      >
-        Pagado
-      </SecondaryButton>
-      <div>
-        <p class="flex justify-end px-2 text-sm text-gray-400"> {{ debt.created_at }} </p>
+      <div class="flex flex-col space-x-5 px-4 text-sm">
+        <p class="flex justify-end px-2 text-sm text-gray-400"> {{ expense.created_at }} </p>
       </div>
     </div>
     
-    <p v-if="!debts.data.length" class="text-sm text-gray-200 text-center py-6">No hay elementos para mostrar</p>
-    <Pagination :pagination="debts"/>
+    <p v-if="!expenses.length" class="text-sm text-gray-200 text-center py-6">No hay elementos para mostrar</p>
+    <!-- <Pagination :pagination="incomes"/> -->
 
   <ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
       <template #title>
@@ -129,7 +108,7 @@ export default {
     SearchInput,
   },
   props: {
-    incomes: Object,
+    expenses: Array,
     filters: Object,
     filterURL: String,
   },

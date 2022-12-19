@@ -111,6 +111,9 @@
           </div>
         </Link>
 
+
+      <div class="grid grid-cols-2 gap-2">
+      
         <Link :href="route('expenses.index')" class="w-full">
           <div
             class="
@@ -216,6 +219,9 @@
             </div>
           </div>
         </Link>
+        </div>
+
+        
 
         <Link :href="route('loans.index')" class="w-full">
           <div

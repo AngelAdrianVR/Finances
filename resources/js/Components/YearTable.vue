@@ -18,7 +18,12 @@
                 {{data[index]}}
               </td>
               <td class="py-4 px-6 text-center border-b border-grey-light">
-                <Link :href="route('statistics.resume')"><PrimaryButton class="!bg-indigo-500">Ver</PrimaryButton></Link>
+                <Link :href="color == 0 ?route('statistics.incomes-resume',(index + 1)) 
+                      : color == 1 ? route('statistics.expenses-resume',(index + 1)) 
+                      : color == 2 ? route('statistics.loans-resume',(index + 1)) 
+                      : color == 3 ? route('statistics.debts-resume',(index + 1))
+                      : route('statistics.investments-resume',(index + 1))">
+                      <PrimaryButton class="!bg-indigo-500">Ver</PrimaryButton></Link>
               </td>
             </tr>
           </tbody>

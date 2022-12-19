@@ -2,20 +2,17 @@
   <AppLayout title="Préstamos">
     <div class="flex justify-between">
       <header class="block text-3xl text-gray-100 bg-stone-900 mt-5 ml-4">
-        Préstamos
+        Resumen de Préstamos Mensual
       </header>
-      <Link :href="route('loans.create')"
-        ><PrimaryButton class="mr-2 my-4">Crear +</PrimaryButton></Link
-      >
-    </div>
 
-    <SearchInput 
+    </div>
+    <!-- <SearchInput 
       :filters="filters"
       filterURL="/loans"
-       />
+       /> -->
 
     <div
-      v-for="(loan, index) in loans.data"
+      v-for="(loan, index) in loans"
       :key="loan.id"
       class="
         flex flex-col
@@ -78,8 +75,8 @@
         <p class="flex justify-end px-2 text-sm text-gray-400"> {{ loan.created_at }} </p>
       </div>
     </div>
-    <p v-if="!loans.data.length" class="text-sm text-gray-200 text-center py-6">No hay elementos para mostrar</p>
-    <Pagination :pagination="loans"/>
+    <p v-if="!loans.length" class="text-sm text-gray-200 text-center py-6">No hay elementos para mostrar</p>
+    <!-- <Pagination :pagination="loans"/> -->
 
     <ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
     <template #title>
@@ -131,7 +128,7 @@ export default {
     SearchInput,
   },
   props: {
-    loans: Object,
+    loans: Array,
     filters: Object,
     filterURL: String,
   },

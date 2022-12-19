@@ -201,8 +201,24 @@ onMounted(() => {
                         <p class="font-thin">Mis Finanzas</p>
                         </div>
                         <div class="-mr-2 flex items-center sm:hidden">
+                            <Dropdown align="left" width="52" class="mr-7">
+                            <template #trigger>
+                                <i class="fa-solid fa-bell"></i>
+                            </template>
+                            <template #content>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones para prueba de deasas</p>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones dsgfsdgf dgdrfg sdg d</p>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones para prueba de deasas</p>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones dsgfsdgf dgdrfg sdg d</p>
+                            </template>
+                            </Dropdown>
+
                             <span class="flex items-center mr-3 text-xs"><i class="fa-solid fa-piggy-bank text-sm text-gray-300 mr-1"></i> ${{invests}} </span>
-                            <span class="flex items-center text-xs"><i class="fa-solid fa-wallet text-sm text-gray-300 mr-1"></i> ${{total}} </span>
+                            <span class="flex items-center text-xs mr-2"><i class="fa-solid fa-wallet text-sm text-gray-300 mr-1"></i> ${{total}} </span>
                             <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-200 hover:text-stone-700 hover:bg-stone-500 focus:outline-none focus:bg-gray-700 focus:text-gray-700 transition" @click="showingNavigationDropdown = ! showingNavigationDropdown">
                                 <svg
                                     class="h-6 w-6 text-stone-400"
@@ -244,10 +260,10 @@ onMounted(() => {
                             Egresos
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('loans.index')" :active="route().current('loans.*')">
-                            Préstamos
+                            Préstamos Hechos
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('debts.index')" :active="route().current('debts.*')">
-                            Deudas
+                            Mis Deudas
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('investments.index')"
                             :active="route().current('investments.*')">

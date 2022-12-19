@@ -34,7 +34,7 @@ class IncomeController extends Controller
     {
        $validated = $request->validate([
             'quantity' => 'required|numeric|min:1',
-            'concept' => 'required|max:50',
+            'concept' => 'required|max:70',
         ]);
        Income::create($validated + ['user_id'=>auth()->id()]);
         

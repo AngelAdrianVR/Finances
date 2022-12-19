@@ -55,6 +55,7 @@
         <span> ${{ loan.quantity }} </span>
       </div>
       <div class="flex flex-col space-x-5 px-4 py-3 text-base">
+        <span> Razón: {{ loan.reason }} </span>
         <span > Fecha promesa: {{ loan.pay_date }} </span>
         <span class="font-bold" v-if="loan.payed_at"> Pagado el: {{ loan.payed_at }} </span>
       </div>

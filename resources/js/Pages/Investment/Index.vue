@@ -1,7 +1,7 @@
 <template>
   <AppLayout title="Inversiones">
     <div class="flex justify-between">
-      <header class="block text-3xl text-gray-100 bg-stone-900 mt-5 ml-4">
+      <header class="block text-3xl text-gray-100 mt-5 ml-4">
         Inversiones
       </header>
       <Link :href="route('investments.create')"
@@ -21,15 +21,15 @@
         flex flex-col
         container
         mx-auto
-        bg-stone-700
-        border-2
         rounded-lg
         h-auto
         mt-4
         w-[90%]
         relative
+        bg-stone-800
+        py-2
       "
-      :class="investment.released_at ? 'border-green-600' : 'border-indigo-600'"
+      :class="investment.released_at ? 'shadow-md shadow-green-500/100' : 'shadow-md shadow-indigo-500/100'"
     >
       <button
         @click="delete_confirm = true; item_to_delete = investment;"
@@ -72,6 +72,7 @@
           font-bold
           mt-2
           mb-3
+          border-green-700
         "
       >
         Liberado

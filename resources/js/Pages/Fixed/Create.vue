@@ -1,18 +1,18 @@
 <template>
-  <AppLayout title="Crear Inversión">
+  <AppLayout title="Crear Gasto Fijo">
     <div class="flex space-x-7 ml-2">
       <Link
-        :href="route('investments.index')"
+        :href="route('fixed.index')"
         class="flex items-center mt-2 text-indigo-600"
       >
         <i class="fas fa-long-arrow-alt-left text-lg"></i>
         <span class="ml-2">Atrás</span>
       </Link>
-      <header class="block text-3xl text-gray-1000 mt-5">
-        Crear Inversión
+      <header class="block text-3xl text-gray-100 mt-5">
+        Crear Gasto fijo
       </header>
     </div>
-    <div class="container mx-auto bg-stone-800 rounded-lg h-2/3 mt-8 w-[90%] shadow-stone-400/100">
+    <div class="container mx-auto bg-stone-800 rounded-lg h-auto mt-8 w-[90%] shadow-stone-400/100">
       <form @submit.prevent="store" class="mt-6">
         <div
           class="
@@ -27,7 +27,7 @@
         >
           <div class="mt-3 text-center">
             <InputLabel
-              class="dark:text-gray-300 mx-4 my-1 text-lg"
+              class="dark:text-gray-300 mx-4 my-2 text-lg"
               value="Cantidad"
             />
             <TextInput
@@ -40,55 +40,33 @@
             />
             <InputError :message="$page.props?.errors.quantity" />
             <InputLabel
-              class="dark:text-gray-300 mx-4 my-1 text-lg"
-              value="Plataforma"
+              class="dark:text-gray-300 mx-4 my-2 text-lg"
+              value="Concepto"
             />
             <TextInput
-              id="platform"
-              v-model="form.platform"
+              id="concept"
+              v-model="form.concept"
               type="text"
               class="mt-1 block w-full"
               required
             />
-            <InputError :message="$page.props?.errors.platform" />
-            <InputLabel
-              class="dark:text-gray-300 mx-4 my-1 text-lg"
-              value="Tipo"
-            />
-            <TextInput
-              id="type"
-              v-model="form.type"
-              type="text"
-              class="mt-1 block w-full"
-              required
-            />
-            <InputError :message="$page.props?.errors.type" />
-            <InputLabel
-              class="dark:text-gray-300 mx-4 my-1 text-lg"
-              value="Ganancia"
-            />
-            <TextInput
-              id="profit"
-              v-model="form.profit"
-              type="text"
-              class="mt-1 block w-full"
-              required
-            />
-            <InputError :message="$page.props?.errors.profit" />
-            <InputLabel
-              class="dark:text-gray-300 mx-4 my-1 text-lg"
-              value="Fecha de liberación"
-            />
-            <TextInput
-              id="release_date"
-              v-model="form.release_date"
-              type="date"
-              class="mt-1 block w-full"
-              required
-            />
-            <InputError :message="$page.props?.errors.release_date" />
-            <PrimaryButton :disabled="form.processing" class="my-4 bg-stone-800">Agregar</PrimaryButton>
+            <InputError :message="$page.props?.errors.concept" />
 
+            <InputLabel
+              class="dark:text-gray-300 mx-4 my-2 text-lg"
+              value="Recurrencia de gasto"
+            />
+            <TextInput
+             placeholder="Ejem. Mensual/Semanal"
+              id="recurrency"
+              v-model="form.recurrency"
+              type="text"
+              class="mt-1 block w-full mi-input"
+              required
+            />
+            <InputError :message="$page.props?.errors.recurrency" />
+            
+            <PrimaryButton :disabled="form.processing" class="my-4 bg-stone-800">Agregar</PrimaryButton>
           </div>
         </div>
       </form>
@@ -100,18 +78,16 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import InputLabel from "@/Components/InputLabel.vue";
-import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
+import TextInput from "@/Components/TextInput.vue";
 import { Link, useForm } from "@inertiajs/inertia-vue3";
 
 export default {
   data() {
     const form = useForm({
       quantity: null,
-      platform: "",
-      type: "",
-      profit: "",
-      release_date: "",
+      concept: "",
+      recurrency: "",
     });
     return {
       form,
@@ -122,16 +98,15 @@ export default {
     PrimaryButton,
     InputLabel,
     TextInput,
-    InputError,
     Link,
-    useForm,
+    InputError,
   },
   props: {
-    
+    categories: Object,
   },
   methods: {
     store() {
-      this.form.post(this.route("investments.store"));
+      this.form.post(this.route("fixed.store"));
     },
   },
 };

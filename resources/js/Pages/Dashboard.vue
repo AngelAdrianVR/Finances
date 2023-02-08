@@ -5,7 +5,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <Welcome :data="[total_incomes,total_expenses,total_loans,total_debts,total_investments]"/>
+                    <Welcome :data="[total_incomes,total_expenses,total_loans,total_debts,total_investments,total_fixeds]"/>
                 </div>
             </div>
         </div>
@@ -32,6 +32,7 @@ export default {
         total_loans: String,
         total_debts: String,
         total_investments: String,
+        total_fixeds: String,
     },
 }
 </script>

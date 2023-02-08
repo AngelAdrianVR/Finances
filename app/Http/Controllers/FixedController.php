@@ -2,84 +2,71 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\FixedResource;
 use App\Models\Fixed;
 use Illuminate\Http\Request;
 
 class FixedController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $fixeds = FixedResource::collection(auth()->user()->fixeds()->latest()->paginate(30));
+        return inertia('Fixed/Index', compact('fixeds'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
-        //
+        return inertia('Fixed/Create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        // return $request;
+        $validated = $request->validate([
+            'quantity' => 'required|numeric|min:1',
+            'concept' => 'required|max:70',
+            'recurrency' => 'required',
+        ]);
+
+       Fixed::create($validated + ['user_id'=>auth()->id()]);
+        
+        request()->session()->flash('flash.banner', 'Se ha creado un nuevo gasto fijo correctamente!');
+        request()->session()->flash('flash.bannerStyle', 'success');
+
+        return redirect()->route('fixed.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Fixed  $fixed
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Fixed $fixed)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Fixed  $fixed
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Fixed $fixed)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Fixed  $fixed
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, Fixed $fixed)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Fixed  $fixed
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy(Fixed $fixed)
     {
-        //
+        $fixed->delete();
+        request()->session()->flash('flash.banner', 'Se ha eliminado correctamente!');
+        request()->session()->flash('flash.bannerStyle', 'success'); 
+        return redirect()->route('fixed.index');
     }
 }

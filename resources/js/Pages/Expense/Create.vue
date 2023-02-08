@@ -8,11 +8,11 @@
         <i class="fas fa-long-arrow-alt-left text-lg"></i>
         <span class="ml-2">Atrás</span>
       </Link>
-      <header class="block text-3xl text-gray-100 bg-stone-900 mt-5">
+      <header class="block text-3xl text-gray-100 mt-5">
         Crear Egreso
       </header>
     </div>
-    <div class="container mx-auto bg-stone-700 rounded-lg h-64 mt-8 w-[90%]">
+    <div class="container mx-auto bg-stone-800 rounded-lg h-64 mt-8 w-[90%] shadow-stone-400/100">
       <form @submit.prevent="store" class="mt-6">
         <div
           class="

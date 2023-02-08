@@ -50,8 +50,9 @@ Route::middleware([
         $total_loans = number_format(auth()->user()->loans()->WhereNull('payed_at')->get('quantity')->sum('quantity'),2);
         $total_debts = number_format(auth()->user()->debts()->WhereNull('payed_at')->get('quantity')->sum('quantity'),2);
         $total_investments = number_format(auth()->user()->investments()->WhereNull('released_at')->get('quantity')->sum('quantity'),2);
+        $total_fixeds = number_format(auth()->user()->fixeds()->get('quantity')->sum('quantity'),2);
         
-        return Inertia::render('Dashboard',compact('total_incomes','total_expenses','total_loans','total_debts','total_investments'));
+        return Inertia::render('Dashboard',compact('total_incomes','total_expenses','total_loans','total_debts','total_investments','total_fixeds'));
     })->name('dashboard');
 });
 
@@ -79,7 +80,7 @@ Route::get('/expenses/create', [ExpenseController::class, 'create'])->name('expe
 Route::post('/expenses/store', [ExpenseController::class, 'store'])->name('expenses.store');
 Route::delete('/expenses/{expense}', [ExpenseController::class, 'destroy'])->name('expenses.destroy');
 
-Route::get('/fixed', [FixedController::class, 'index'])->name('fixed.index');
+Route::resource('fixed', FixedController::class);
 
 Route::get('/loans',[LoanController::class, 'index'])->name('loans.index');
 Route::get('/loans/create',[LoanController::class, 'create'])->name('loans.create');

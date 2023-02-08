@@ -70,6 +70,11 @@ class User extends Authenticatable
         return $this->hasMany(Expense::class);
     }
 
+    public function fixeds()
+    {
+        return $this->hasMany(Fixed::class);
+    }
+
     public function loans()
     {
         return $this->hasMany(Loan::class);

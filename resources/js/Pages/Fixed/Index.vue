@@ -1,23 +1,18 @@
 <template>
-  <AppLayout title="Ingresos">
+  <AppLayout class="pb-4" title="Fijos">
     <div class="flex justify-between">
       <header class="block text-3xl text-gray-100 mt-5 ml-4">
-        Ingresos
+        Gastos Fijos
       </header>
-      <Link :href="route('incomes.create')"
-        ><PrimaryButton class="mr-2 mt-4">Crear +</PrimaryButton></Link
+      <Link :href="route('fixed.create')"
+        ><PrimaryButton class="mr-2 my-4">Crear +</PrimaryButton></Link
       >
     </div>
-    <SearchInput 
-      :filters="filters"
-      filterURL="/incomes"
-       />
 
     <div
-      v-for="income in incomes.data"
-      :key="income.id"
-      class="
-        relative
+      v-for="fixed in fixeds.data"
+      :key="fixed.id"
+      class="relative
         container
         mx-auto
         rounded-lg
@@ -27,10 +22,10 @@
         bg-stone-800
         shadow-md shadow-stone-400/100
         py-2
-      "
+        "
     >
       <button
-        @click="delete_confirm = true; item_to_delete = income;"
+        @click="delete_confirm = true; item_to_delete = fixed;"
         class="
           text-red-500 text-lg
           font-bold
@@ -49,25 +44,25 @@
         x
       </button>
 
-      <div class="flex flex-row space-x-10 px-4 pt-2 text-sm mb-2">
-        <span class="font-bold uppercase"> {{ income.concept }} </span>
-        <span> ${{ income.quantity }} </span>
+      <div class="flex space-x-5 px-4 py-3 text-sm mt-3">
+        <span class="font-bold uppercase"> {{ fixed.concept }} <i class="fa-solid fa-arrow-right text-white ml-3"></i> </span>
+        <span>Cantidad: ${{ fixed.quantity }} </span>
       </div>
-      <div class="">
-        <p class="flex justify-end px-2 text-xs text-gray-400"> {{ income.created_at }} </p>
+      <div>
+        <p class="flex justify-end px-2 text-sm text-gray-400"> {{ fixed.created_at }} </p>
       </div>
     </div>
-    <p v-if="!incomes.data.length" class="text-sm text-gray-200 text-center py-6">No hay elementos para mostrar</p>
-  <Pagination :pagination="incomes" />
+    <p v-if="!fixeds.data.length" class="text-sm text-gray-200 text-center py-6">No hay elementos para mostrar</p>
+    <Pagination :pagination="fixeds" />
 
-<ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
+  <ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
     <template #title>
       <div>¿Deseas continuar?</div>
     </template>
     <template #content>
       <div>
-        Estás a punto de eliminar un registro de ingreso. Una vez realizado ya no se podrá
-        recuperar
+        Estás a punto de eliminar un registro de gasto fijo. Una vez realizado ya no se podrá
+        recuperar.
       </div>
     </template>
     <template #footer>
@@ -86,40 +81,37 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import Pagination from "@/Components/Pagination.vue";
-import SearchInput from "@/Components/SearchInput.vue";
-import ConfirmationModal from "@/Components/ConfirmationModal.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from '@inertiajs/inertia';
+import Pagination from "@/Components/Pagination.vue";
+import ConfirmationModal from "@/Components/ConfirmationModal.vue";
+import SearchInput from "@/Components/SearchInput.vue";
 
 export default {
   data() {
     return {
       delete_confirm: false,
       item_to_delete: {},
-      
-      };
+    };
   },
   components: {
     AppLayout,
     PrimaryButton,
     Link,
-    SearchInput,
     Pagination,
     ConfirmationModal,
+    SearchInput,
   },
   props: {
-    incomes: Object,
-    filters: Object,
-    filterURL: String,
+    fixeds: Object,
   },
   methods: {
-    delete() {
+       delete() {
       this.$inertia.delete(
-        this.route("incomes.destroy", this.item_to_delete)
+        this.route("fixed.destroy", this.item_to_delete)
       );
       this.delete_confirm = false;
-    },
   },
+},
 };
 </script>

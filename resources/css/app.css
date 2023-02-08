@@ -1,3 +1,5 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.mi-input::placeholder { color: rgba(194, 191, 191, 0.479); font-weight: bold; }

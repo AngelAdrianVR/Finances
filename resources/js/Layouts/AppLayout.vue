@@ -52,7 +52,7 @@ onMounted(() => {
     <div>
         <Banner />
 
-        <div class="min-h-screen bg-stone-900 text-gray-300 pb-4">
+        <div class="min-h-screen bg-gradient-to-tr from-stone-900 to-stone-700 text-gray-300 pb-4">
             <nav class="bg-stone border-b border-indigo-600/100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -206,14 +206,9 @@ onMounted(() => {
                                 <i class="fa-solid fa-bell"></i>
                             </template>
                             <template #content>
-                                <p>Aquí van tus notificaciones</p>
-                                <p>Aquí van tus notificaciones para prueba de deasas</p>
-                                <p>Aquí van tus notificaciones</p>
-                                <p>Aquí van tus notificaciones dsgfsdgf dgdrfg sdg d</p>
-                                <p>Aquí van tus notificaciones</p>
-                                <p>Aquí van tus notificaciones para prueba de deasas</p>
-                                <p>Aquí van tus notificaciones</p>
-                                <p>Aquí van tus notificaciones dsgfsdgf dgdrfg sdg d</p>
+                                <p>Notificaciones en desarrollo</p>
+                                <p>Viene pronto!</p>
+                                
                             </template>
                             </Dropdown>
 
@@ -258,6 +253,9 @@ onMounted(() => {
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('expenses.index')" :active="route().current('expenses.*')">
                             Egresos
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('fixed.index')" :active="route().current('fixed.*')">
+                            Gastos Fijos
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('loans.index')" :active="route().current('loans.*')">
                             Préstamos Hechos

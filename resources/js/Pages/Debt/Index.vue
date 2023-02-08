@@ -1,7 +1,7 @@
 <template>
   <AppLayout title="Deudas">
     <div class="flex justify-between">
-      <header class="block text-3xl text-gray-100 bg-stone-900 mt-5 ml-4">
+      <header class="block text-3xl text-gray-100 mt-5 ml-4">
         Deudas
       </header>
       <Link :href="route('debts.create')"
@@ -21,15 +21,15 @@
         flex flex-col
         container
         mx-auto
-        bg-stone-700
-        border-2
         rounded-lg
         h-auto
         mt-4
         w-[90%]
         relative
+        bg-stone-800
+        py-2
       "
-      :class="debt.payed_at ? 'border-green-600' : 'border-red-600'"
+      :class="debt.payed_at ? 'shadow-md shadow-green-500/100' : 'shadow-md shadow-red-500/100'"
     >
       <button
         @click="delete_confirm = true; item_to_delete = debt;"
@@ -71,6 +71,7 @@
           font-bold
           mt-2
           mb-5
+          border-green-700
         "
       >
         Pagado

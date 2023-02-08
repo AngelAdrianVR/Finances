@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Fixed extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'quantity',
+        'concept',
+        'recurrency',
+        'user_id',
+    ];
+
+     //relationships
+     public function user()
+     {
+         return $this->belongsTo(User::class);
+     }
 }

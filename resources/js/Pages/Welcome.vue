@@ -1,5 +1,6 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 defineProps({
     canLogin: Boolean,
@@ -25,38 +26,38 @@ defineProps({
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             
-            <div class="mt-8 bg-stone-700 overflow-hidden shadow sm:rounded-lg divide-y-2 rounded-lg">
+            <div class="shadow-lg shadow-stone-500/100 mt-8 bg-gradient-to-tr from-stone-900 to-stone-700 overflow-hidden shadow sm:rounded-lg divide-y-2 rounded-lg">
                     
-                    <div class="p-6 border-l-4 stroke-neutral-500">
+                    <div class="p-6 border-l-4">
                         <div class="flex items-center justify-center">
                             <i class="fa-solid fa-wallet text-4xl text-gray-400"></i>
                         </div>
 
-                        <div class="ml-12">
+                        <div class="text-center">
                             <div class="mt-2 text-gray-300">
                                 Registra tus finanzas personales.
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 border-l-4 stroke-neutral-500">
+                    <div class="p-6 border-l-4">
                         <div class="flex items-center justify-center">
                             <i class="fa-solid fa-coins text-4xl text-gray-400"></i>
                         </div>
 
-                        <div class="ml-12">
+                        <div class="text-center">
                             <div class="mt-2 text-gray-300">
                                 Archiva Ingresos y Egresos 
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 border-l-4 stroke-neutral-500">
+                    <div class="p-6 border-l-4">
                         <div class="flex items-center justify-center">
                             <i class="fa-solid fa-money-bill-trend-up text-4xl text-gray-400"></i>
                         </div>
 
-                        <div class="ml-12">
+                        <div class="text-center">
                             <div class="mt-2 text-gray-300">
                                 Aumenta tus ingresos 
                             </div>
@@ -64,17 +65,17 @@ defineProps({
                     </div> 
             </div>
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                        <div class="mt-8 bg-stone-700 overflow-hidden shadow sm:rounded-lg divide-y-2 rounded-lg">
-                            <div class="p-6 border-l-4 stroke-neutral-500">
+                        <div class="mt-8 shadow-lg shadow-stone-500/100 bg-gradient-to-tr from-stone-900 to-stone-700 overflow-hidden shadow sm:rounded-lg divide-y-2 rounded-lg">
+                            <div class="p-6 border-l-4">
                         <div class="flex items-center justify-between">
                             <i class="fa-solid fa-user text-2xl text-gray-400"></i>
                             <i class="fa-solid fa-address-card text-2xl text-gray-400"></i>
                         </div>
 
-                        <div class="ml-12">
+                        <div class="">
                             <div class="mt-2 text-gray-300 text-left flex justify-between">
-                                <Link :href="route('login')" class="text-lg text-gray-300 underline">Entrar</Link> 
-                                 <Link v-if="canRegister" :href="route('register')" class="ml-4 text-lg text-gray-300 underline">Registrar</Link>
+                                <Link :href="route('login')" class="text-lg text-gray-300"><PrimaryButton>Entrar</PrimaryButton></Link> 
+                                 <Link v-if="canRegister" :href="route('register')" class="ml-4 text-lg text-gray-300"><PrimaryButton>Regístrate</PrimaryButton></Link>
                             </div>
                         </div>
                             </div>

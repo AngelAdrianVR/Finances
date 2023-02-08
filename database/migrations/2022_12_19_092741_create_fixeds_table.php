@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('fixeds', function (Blueprint $table) {
             $table->id();
+
+            $table->string('concept');
+            $table->unsignedFloat('quantity');
+            $table->string('recurrency');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

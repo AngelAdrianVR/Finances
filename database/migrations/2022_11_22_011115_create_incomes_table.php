@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('incomes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedMediumInteger('quantity');
+            $table->unsignedFloat('quantity');
             $table->string('concept')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();

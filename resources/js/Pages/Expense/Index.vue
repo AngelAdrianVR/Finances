@@ -1,7 +1,7 @@
 <template>
   <AppLayout class="pb-4" title="Egresos">
     <div class="flex justify-between">
-      <header class="block text-3xl text-gray-100 bg-stone-900 mt-5 ml-4">
+      <header class="block text-3xl text-gray-100 mt-5 ml-4">
         Egresos
       </header>
       <Link :href="route('expenses.create')"
@@ -20,13 +20,14 @@
       class="relative
         container
         mx-auto
-        bg-stone-700
-        border-2
-        border-gray-500
         rounded-lg
         h-auto
         mt-4
-        w-[90%]"
+        w-[90%]
+        bg-stone-800
+        shadow-md shadow-stone-400/100
+        py-2
+        "
     >
       <button
         @click="delete_confirm = true; item_to_delete = expense;"

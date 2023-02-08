@@ -1,39 +1,16 @@
-
 <template>
   <div>
-    <h1 class="text-3xl text-gray-100 bg-stone-900 py-3 pl-3">Inicio</h1>
+    <h1 class="text-3xl text-gray-100 bg-stone-700 py-3 pl-3">Inicio</h1>
     <div class="p-6 sm:px-20 bg-stone-700 text-gray-200">
       <!-- component -->
       <!-- This is an example component -->
 
       <div
-        class="
-          flex
-          md:flex-row
-          flex-col
-          space-y-2
-          sm:space-x-2
-          w-full
-          items-center
-          justify-center
-          min-h-screen
-        "
+        class="flex md:flex-row flex-col space-y-2 sm:space-x-2 w-full items-center justify-center min-h-screen"
       >
         <Link :href="route('statistics.index')" class="w-full">
           <div
-            class="
-              flex flex-wrap flex-row
-              sm:flex-col
-              justify-center
-              items-center
-              w-full
-              sm:w-1/4
-              p-5
-              bg-gray-700
-              rounded-md
-              shadow-xl
-              border-l-4 border-blue-300
-            "
+            class="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full sm:w-1/4 p-5 bg-gray-700 rounded-md shadow-xl border-l-4 border-blue-300"
           >
             <div class="flex justify-between w-full">
               <div>
@@ -44,15 +21,7 @@
               <div>
                 <div
                   style="padding-top: 0.1em; padding-bottom: 0.1rem"
-                  class="
-                    flex
-                    items-center
-                    text-xs
-                    px-3
-                    bg-blue-300
-                    text-blue-800
-                    rounded-full
-                  "
+                  class="flex items-center text-xs px-3 bg-blue-300 text-blue-800 rounded-full"
                 >
                   Estadísticas
                 </div>
@@ -67,19 +36,7 @@
 
         <Link :href="route('incomes.index')" class="w-full">
           <div
-            class="
-              flex flex-wrap flex-row
-              sm:flex-col
-              justify-center
-              items-center
-              w-full
-              sm:w-1/4
-              p-5
-              bg-gray-700
-              rounded-md
-              shadow-xl
-              border-l-4 border-green-300
-            "
+            class="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full sm:w-1/4 p-5 bg-gray-700 rounded-md shadow-xl border-l-4 border-green-300"
           >
             <div class="flex justify-between w-full">
               <div>
@@ -90,15 +47,7 @@
               <div>
                 <div
                   style="padding-top: 0.1em; padding-bottom: 0.1rem"
-                  class="
-                    flex
-                    items-center
-                    text-xs
-                    px-3
-                    bg-green-300
-                    text-green-800
-                    rounded-full
-                  "
+                  class="flex items-center text-xs px-3 bg-green-300 text-green-800 rounded-full"
                 >
                   ${{ data[0] }}
                 </div>
@@ -111,133 +60,64 @@
           </div>
         </Link>
 
+        <div class="grid grid-cols-2 gap-2">
+          <Link :href="route('expenses.index')" class="w-full">
+            <div
+              class="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full sm:w-1/4 p-5 bg-gray-700 rounded-md shadow-xl border-l-4 border-red-400"
+            >
+              <div class="flex justify-between w-full">
+                <div>
+                  <div class="p-2">
+                    <i class="fa-solid fa-hand-holding-dollar text-lg text-gray-400"></i>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    style="padding-top: 0.1em; padding-bottom: 0.1rem"
+                    class="flex items-center text-xs px-3 bg-red-300 text-red-800 rounded-full"
+                  >
+                    ${{ data[1] }}
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col justify-center items-center">
+                <i class="fa-solid fa-hand-holding-dollar text-5xl text-gray-200"></i>
+                <span class="font-semibold">Egresos</span>
+              </div>
+            </div>
+          </Link>
 
-      <div class="grid grid-cols-2 gap-2">
-      
-        <Link :href="route('expenses.index')" class="w-full">
-          <div
-            class="
-              flex flex-wrap flex-row
-              sm:flex-col
-              justify-center
-              items-center
-              w-full
-              sm:w-1/4
-              p-5
-              bg-gray-700
-              rounded-md
-              shadow-xl
-              border-l-4 border-red-400
-            "
-          >
-            <div class="flex justify-between w-full">
-              <div>
-                <div class="p-2">
-                  <i
-                    class="
-                      fa-solid fa-hand-holding-dollar
-                      text-lg text-gray-400
-                    "
-                  ></i>
+          <Link :href="route('fixed.index')" class="w-full">
+            <div
+              class="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full sm:w-1/4 p-5 bg-gray-700 rounded-md shadow-xl border-l-4 border-red-400"
+            >
+              <div class="flex justify-between w-full">
+                <div>
+                  <div class="p-2">
+                    <i class="fa-solid fa-lock text-lg text-gray-400"></i>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    style="padding-top: 0.1em; padding-bottom: 0.1rem"
+                    class="flex items-center text-xs px-3 bg-red-300 text-red-800 rounded-full"
+                  >
+                    ${{ data[5] }}
+                  </div>
                 </div>
               </div>
-              <div>
-                <div
-                  style="padding-top: 0.1em; padding-bottom: 0.1rem"
-                  class="
-                    flex
-                    items-center
-                    text-xs
-                    px-3
-                    bg-red-300
-                    text-red-800
-                    rounded-full
-                  "
-                >
-                  ${{ data[1] }}
-                </div>
-              </div>
-            </div>
-            <div class="flex flex-col justify-center items-center">
-              <i
-                class="fa-solid fa-hand-holding-dollar text-5xl text-gray-200"
-              ></i>
-              <span class="font-semibold">Egresos</span>
-            </div>
-          </div>
-        </Link>
 
-        <Link :href="route('expenses.index')" class="w-full">
-          <div
-            class="
-              flex flex-wrap flex-row
-              sm:flex-col
-              justify-center
-              items-center
-              w-full
-              sm:w-1/4
-              p-5
-              bg-gray-700
-              rounded-md
-              shadow-xl
-              border-l-4 border-red-400
-            "
-          >
-            <div class="flex justify-between w-full">
-              <div>
-                <div class="p-2">
-                  <i
-                    class="
-                      fa-solid fa-lock
-                      text-lg text-gray-400
-                    "
-                  ></i>
-                </div>
-              </div>
-              <div>
-                <div
-                  style="padding-top: 0.1em; padding-bottom: 0.1rem"
-                  class="
-                    flex
-                    items-center
-                    text-xs
-                    px-3
-                    bg-red-300
-                    text-red-800
-                    rounded-full
-                  "
-                >
-                  ${{ data[1] }}
-                </div>
+              <div class="flex flex-col justify-center items-center">
+                <i class="fa-solid fa-lock text-5xl text-gray-200"></i>
+                <span class="font-semibold">Gastos Fijos</span>
               </div>
             </div>
-            <div class="flex flex-col justify-center items-center">
-              <i
-                class="fa-solid fa-lock text-5xl text-gray-200"
-              ></i>
-              <span class="font-semibold">Gastos Fijos</span>
-            </div>
-          </div>
-        </Link>
+          </Link>
         </div>
-
-        
 
         <Link :href="route('loans.index')" class="w-full">
           <div
-            class="
-              flex flex-wrap flex-row
-              sm:flex-col
-              justify-center
-              items-center
-              w-full
-              sm:w-1/4
-              p-5
-              bg-gray-700
-              rounded-md
-              shadow-xl
-              border-l-4 border-purple-300
-            "
+            class="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full sm:w-1/4 p-5 bg-gray-700 rounded-md shadow-xl border-l-4 border-purple-300"
           >
             <div class="flex justify-between w-full">
               <div>
@@ -248,15 +128,7 @@
               <div>
                 <div
                   style="padding-top: 0.1em; padding-bottom: 0.1rem"
-                  class="
-                    flex
-                    items-center
-                    text-xs
-                    px-3
-                    bg-purple-300
-                    text-purple-800
-                    rounded-full
-                  "
+                  class="flex items-center text-xs px-3 bg-purple-300 text-purple-800 rounded-full"
                 >
                   ${{ data[2] }}
                 </div>
@@ -271,19 +143,7 @@
 
         <Link :href="route('debts.index')" class="w-full">
           <div
-            class="
-              flex flex-wrap flex-row
-              sm:flex-col
-              justify-center
-              items-center
-              w-full
-              sm:w-1/4
-              p-5
-              bg-gray-700
-              rounded-md
-              shadow-xl
-              border-l-4 border-orange-300
-            "
+            class="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full sm:w-1/4 p-5 bg-gray-700 rounded-md shadow-xl border-l-4 border-orange-300"
           >
             <div class="flex justify-between w-full">
               <div>
@@ -294,15 +154,7 @@
               <div>
                 <div
                   style="padding-top: 0.1em; padding-bottom: 0.1rem"
-                  class="
-                    flex
-                    items-center
-                    text-xs
-                    px-3
-                    bg-orange-300
-                    text-orange-800
-                    rounded-full
-                  "
+                  class="flex items-center text-xs px-3 bg-orange-300 text-orange-800 rounded-full"
                 >
                   ${{ data[3] }}
                 </div>
@@ -317,19 +169,7 @@
 
         <Link :href="route('investments.index')" class="w-full">
           <div
-            class="
-              flex flex-wrap flex-row
-              sm:flex-col
-              justify-center
-              items-center
-              w-full
-              sm:w-1/4
-              p-5
-              bg-gray-700
-              rounded-md
-              shadow-xl
-              border-l-4 border-rose-300
-            "
+            class="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full sm:w-1/4 p-5 bg-gray-700 rounded-md shadow-xl border-l-4 border-rose-300"
           >
             <div class="flex justify-between w-full">
               <div>
@@ -340,15 +180,7 @@
               <div>
                 <div
                   style="padding-top: 0.1em; padding-bottom: 0.1rem"
-                  class="
-                    flex
-                    items-center
-                    text-xs
-                    px-3
-                    bg-rose-300
-                    text-rose-800
-                    rounded-full
-                  "
+                  class="flex items-center text-xs px-3 bg-rose-300 text-rose-800 rounded-full"
                 >
                   ${{ data[4] }}
                 </div>

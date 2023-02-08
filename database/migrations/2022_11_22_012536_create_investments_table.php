@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('investments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedMediumInteger('quantity');
+            $table->unsignedFloat('quantity');
             $table->string('type');
             $table->string('profit');
             $table->string('platform');

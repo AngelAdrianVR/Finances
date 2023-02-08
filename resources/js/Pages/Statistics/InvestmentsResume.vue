@@ -1,16 +1,11 @@
 <template>
   <AppLayout title="Inversiones">
     <div class="flex justify-between">
-      <header class="block text-3xl text-gray-100 bg-stone-900 mt-5 ml-4">
+      <header class="block text-3xl text-gray-10 mt-5 ml-4">
         Resumen de Inversiones Mensual
       </header>
       
     </div>
-
-      <!-- <SearchInput 
-      :filters="filters"
-      filterURL="/investments"
-       /> -->
 
     <div
       v-for="(investment, index) in investments"
@@ -19,15 +14,15 @@
         flex flex-col
         container
         mx-auto
-        bg-stone-700
-        border-2
         rounded-lg
         h-auto
         mt-4
         w-[90%]
         relative
+        bg-stone-800
+        shadow-md
       "
-      :class="investment.released_at ? 'border-green-600' : 'border-indigo-600'"
+      :class="investment.released_at ? 'shadow-green-500/100' : 'shadow-indigo-500/100'"
     >
       <button
         @click="delete_confirm = true; item_to_delete = investment;"
@@ -65,6 +60,7 @@
           flex
           justify-center
           bg-green-700
+          border-green-700
           mx-20
           text-center text-white
           font-bold
@@ -79,7 +75,6 @@
       </div>
     </div>
     <p v-if="!investments.length" class="text-sm text-gray-200 text-center py-6">No hay elementos para mostrar</p>
-    <!-- <Pagination :pagination="investments"/> -->
 
   <ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
     <template #title>

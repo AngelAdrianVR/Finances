@@ -66,7 +66,6 @@ export default {
         InputLabel,
         TextInput,
         Link,
-        useForm,
         InputError,
     },
     props:{

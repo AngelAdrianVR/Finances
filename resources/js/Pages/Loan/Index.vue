@@ -27,9 +27,10 @@
         w-[90%]
         relative
         bg-stone-800
+        shadow-md
         py-2
       "
-      :class="loan.payed_at ? 'shadow-md shadow-green-500/100' : 'shadow-md shadow-red-500/100'"
+      :class="loan.payed_at ? 'shadow-green-500/100' : 'shadow-red-500/100'"
     >
       <button
         @click="delete_confirm = true; item_to_delete = loan;"
@@ -66,6 +67,7 @@
           flex
           justify-center
           bg-green-700
+          border-green-700
           mx-20
           text-center text-white
           font-bold

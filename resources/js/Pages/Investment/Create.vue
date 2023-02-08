@@ -34,6 +34,7 @@
               id="quantity"
               v-model="form.quantity"
               type="number"
+              step="0.1"
               class="mt-1 block w-full"
               required
               autofocus
@@ -124,7 +125,6 @@ export default {
     TextInput,
     InputError,
     Link,
-    useForm,
   },
   props: {
     

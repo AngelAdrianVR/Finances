@@ -1,15 +1,11 @@
 <template>
   <AppLayout title="Resumen Mendual">
     <div class="flex justify-between">
-      <header class="block text-3xl text-gray-100 bg-stone-900 mt-5 ml-4">
+      <header class="block text-3xl text-gray-100 mt-5 ml-4">
         Resumen de Gastos Mensual
       </header>
     </div>
-    <!-- <SearchInput 
-      :filters="filters"
-      filterURL="/debts"
-       /> -->
-       
+
     <div
       v-for="(expense) in expenses"
       :key="expense.id"
@@ -17,13 +13,13 @@
         flex flex-col
         container
         mx-auto
-        bg-stone-700
-        border-2
         rounded-lg
         h-auto
         mt-4
         w-[90%]
         relative
+        bg-stone-800
+        shadow-md shadow-stone-400/100
       "
     >
       <button
@@ -56,7 +52,6 @@
     </div>
     
     <p v-if="!expenses.length" class="text-sm text-gray-200 text-center py-6">No hay elementos para mostrar</p>
-    <!-- <Pagination :pagination="incomes"/> -->
 
   <ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
       <template #title>

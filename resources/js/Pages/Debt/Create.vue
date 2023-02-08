@@ -31,9 +31,10 @@
               value="Cantidad"
             />
             <TextInput
+              type="number"
+              step="0.1"
               id="quantity"
               v-model="form.quantity"
-              type="number"
               class="mt-1 block w-full"
               required
               autofocus
@@ -113,7 +114,6 @@ export default {
     TextInput,
     InputError,
     Link,
-    useForm,
   },
   props: {
     

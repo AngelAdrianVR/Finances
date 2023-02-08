@@ -34,6 +34,7 @@
               id="quantity"
               v-model="form.quantity"
               type="number"
+              step="0.1"
               class="mt-1 block w-full"
               required
               autofocus
@@ -80,6 +81,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
+import InputError from "@/Components/InputError.vue";
 import { Link, useForm } from "@inertiajs/inertia-vue3";
 
 export default {
@@ -99,7 +101,7 @@ export default {
     InputLabel,
     TextInput,
     Link,
-    useForm,
+    InputError,
   },
   props: {
     categories: Object,
